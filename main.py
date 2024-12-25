@@ -60,14 +60,11 @@ def get_reset_time():
     if now.hour > 5:
         target += timedelta(days=1)
     time_left = target - now 
-    return time_left
+    return f"{time_left.seconds // 3600}h {time_left.seconds % 3600 // 60}m"
 
 @tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
-    
-    embed = discord.Embed(title="**HaoPlay Global**")
-    embed.add_field(name="Next Reset is in:", value=get_reset_time(), inline=False)
-    await interaction.response.send_message(f"The next Global server reset is in {get_reset_time()} hours.", ephemeral=True)
+    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
         
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
