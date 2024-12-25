@@ -6,6 +6,7 @@ from discord.ext import commands
 from io import BytesIO
 import requests
 import re
+from datetime import datetime, timedelta
 from textwrap import wrap
 from dotenv import load_dotenv
 
@@ -54,8 +55,12 @@ async def embed_create(interaction: discord.Interaction):
         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
 
 def get_reset_time():
-    reset_time = "12:52"
-    return reset_time
+    now = datetime.utcnow()
+    target = now.replace(hour=5, minute=0, second=0, microsecond=0)
+    if now.hour > 5:
+        target += timedelta(days=1)
+    time_left = target - now 
+    return time_left
 
 @tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
