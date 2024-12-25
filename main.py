@@ -62,7 +62,7 @@ async def embed_create(interaction: discord.Interaction):
     
     embed = discord.Embed(title="**HaoPlay Global**")
     embed.add_field(name="Next Reset is in:", value=get_reset_time(), inline=False)
-    await interaction.channel.send(embed=embed, ephemeral=True)
+    await interaction.response.send_message(f"The next Global server reset is in {get_reset_time()} hours.", ephemeral=True)
         
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
