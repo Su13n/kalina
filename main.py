@@ -15,34 +15,6 @@ GUILD = os.getenv('DISCORD_GUILD')
 intents = discord.Intents.all()
 intents.members = True
 
-def extract_metadata(message):
-    if not message.attachments:
-        return None
-    content = message.attachments
-    #print("content: "+ content[0].url +"\n" )
-    count = 0
-    urls = []
-    metadata = []
-    for attachment in content:
-        #print("attachment: " + attachment.url)
-        #print("\nfilename: " + attachment.filename)
-        try:
-            #print("inside try")
-            if attachment.filename.endswith(".png") or attachment.filename.endswith(".jpg") or attachment.filename.endswith(".webp"):
-                urls.append(attachment.url)
-                count += 1
-                print(count)
-        except Exception as e:
-            print(e)
-    for url in urls:
-        #print("url in urls: " + url)
-        response = requests.get(url)
-        img = Image.open(BytesIO(response.content))
-        data = img.info
-        formatted = data
-        metadata.append(formatted)
-    return metadata
-
 class aclient(discord.Client):
     def __init__(self):
         super().__init__(intents=discord.Intents.all())
@@ -80,7 +52,18 @@ async def embed_create(interaction: discord.Interaction):
         await interaction.channel.send(embed=embed)
     else:
         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
+
+def get_reset_time():
+    reset_time = "12:52"
+    return reset_time
+
+@tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
+async def embed_create(interaction: discord.Interaction):
     
+    embed = discord.Embed(title="**HaoPlay Global**")
+    embed.add_field(name="Next Reset is in:", value=get_reset_time(), inline=False)
+    await interaction.channel.send(embed=embed, ephemeral=True)
+        
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
     await interaction.response.send_message(
