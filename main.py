@@ -86,7 +86,9 @@ async def supply_reminder():
             embed.set_image(url=sticker.url)
 
         # Send the embed with the sticker attached (Discord will display it below the embed)
-        await channel.send(embed=embed, sticker=sticker)
+        #await channel.send(embed=embed, sticker=sticker)
+        print("Gaeig")
+        await channel.send("Yo")
         await asyncio.sleep(10)
 
 @tree.context_menu(name='Report Message', guild=guild)
