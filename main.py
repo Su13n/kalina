@@ -73,9 +73,10 @@ CHANNEL_ID = 1321452634284232777
 STICKER_ID = 1321509575303893053
 
 @tree.command(name = "remindertest", guild=discord.Object(id=GUILD))
-async def embed_create(interaction: discord.Interaction):
+async def remindertest():
     channel = client.get_channel(CHANNEL_ID)
     if not channel:
+        print("Failed to get channel")
         return
 
     # Fetch the sticker object. This requires correct permissions and the sticker must be in the same guild.
@@ -83,6 +84,7 @@ async def embed_create(interaction: discord.Interaction):
     try:
         sticker = await client.fetch_sticker(STICKER_ID)
     except:
+        print("Failed to fetch sticker")
         sticker = None
 
     embed = discord.Embed(
