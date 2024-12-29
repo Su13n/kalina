@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from textwrap import wrap
 from dotenv import load_dotenv
 import threading
+import gf2_embeds
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -41,22 +42,19 @@ tree = app_commands.CommandTree(client)
 @tree.command(name = "embedcreate", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
     if interaction.user.id == 224589196235505665:
-        embed = discord.Embed(title="**Placeholder Embed**")
-        embed.add_field(name="placeholder 📷", value="placeholder value.", inline=False)
-        embed.set_thumbnail(url = "https://agilevelocity.com/wp-content/uploads/2018/03/work-98936_1280-300x300-1.png")
-        await interaction.channel.send(embed=embed)
+        await interaction.channel.send(embed=get_makiatto())
     else:
         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
         
-@tree.command(name = "embededit", guild=discord.Object(id=GUILD))
-async def embed_create(interaction: discord.Interaction):
-    if interaction.user.id == 224589196235505665:
-        embed = discord.Embed(title="**Placeholder Embed**")
-        embed.add_field(name="placeholder 📷", value="placeholder value.", inline=False)
-        embed.set_thumbnail(url = "https://agilevelocity.com/wp-content/uploads/2018/03/work-98936_1280-300x300-1.png")
-        await interaction.channel.send(embed=embed)
-    else:
-        await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
+# @tree.command(name = "embededit", guild=discord.Object(id=GUILD))
+# async def embed_create(interaction: discord.Interaction):
+#     if interaction.user.id == 224589196235505665:
+#         embed = discord.Embed(title="**Placeholder Embed**")
+#         embed.add_field(name="placeholder 📷", value="placeholder value.", inline=False)
+#         embed.set_thumbnail(url = "https://agilevelocity.com/wp-content/uploads/2018/03/work-98936_1280-300x300-1.png")
+#         await interaction.channel.send(embed=embed)
+#     else:
+#         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
 
 def get_reset_time():
     now = datetime.utcnow()
@@ -152,3 +150,5 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
 
 
 client.run(TOKEN)
+
+
