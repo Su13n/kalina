@@ -29,6 +29,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
+        supply_reminder()
 
 client = aclient()
 guild = discord.Object(id=GUILD)
@@ -67,7 +68,6 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-@tasks.loop(seconds=10, guild=discord.Object(id=GUILD))
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
     try:
@@ -86,12 +86,7 @@ async def supply_reminder():
 
     # Send the embed with the sticker attached (Discord will display it below the embed)
     await channel.send(embed=embed, sticker=sticker)
-
-@supply_reminder.before_loop
-async def supply_reminder_before_loop():
-    await client.wait_until_ready()
-    
-supply_reminder.start()
+    await asyncio.sleep(10)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
