@@ -67,9 +67,37 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
+
 ROLE_ID = 1323023802409554050
 CHANNEL_ID = 1321452634284232777
 STICKER_ID = 1321509575303893053
+
+@tree.command(name = "remindertest", guild=discord.Object(id=GUILD))
+async def embed_create(interaction: discord.Interaction):
+    channel = client.get_channel(CHANNEL_ID)
+    if not channel:
+        return
+
+    # Fetch the sticker object. This requires correct permissions and the sticker must be in the same guild.
+    # If fetch_sticker() fails, handle the exception or skip adding the sticker.
+    try:
+        sticker = await client.fetch_sticker(STICKER_ID)
+    except:
+        sticker = None
+
+    embed = discord.Embed(
+        title="Friendly Reminder!",
+        description=f"<@&{ROLE_ID}> Remember to pick up your free supplies from the shop!",
+        color=0x3498db
+    )
+    # Optionally set the sticker image in the embed:
+    if sticker:
+        embed.set_image(url=sticker.url)
+
+    # Send the embed with the sticker attached (Discord will display it below the embed)
+    await channel.send(embed=embed, sticker=sticker)
+
+
 
 def seconds_until_5am_utc():
     now = datetime.utcnow()
