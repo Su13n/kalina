@@ -67,10 +67,31 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-@tree.command(name = "testcommand", guild=discord.Object(id=GUILD))
-async def embed_create(interaction: discord.Interaction):
-    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
+@tasks.loop(seconds=10)
+async def supply_reminder():
+    channel = client.get_channel(CHANNEL_ID)
+    try:
+        sticker = await client.fetch_sticker(STICKER_ID)
+    except:
+        sticker = None
 
+    embed = discord.Embed(
+        title="Friendly Reminder!",
+        description=f"<@&{ROLE_ID}> Remember to pick up your free supplies from the shop!",
+        color=0x3498db
+    )
+    # Optionally set the sticker image in the embed:
+    if sticker:
+        embed.set_image(url=sticker.url)
+
+    # Send the embed with the sticker attached (Discord will display it below the embed)
+    await channel.send(embed=embed, sticker=sticker)
+
+@supply_reminder.before_loop
+async def supply_reminder_before_loop():
+    await client.wait_until_ready()
+    
+supply_reminder().start()
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
