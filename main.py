@@ -31,7 +31,7 @@ class aclient(discord.Client):
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
         self.loop.create_task(schedule_next_reminder())
-        print("{self.user} is ready!")
+        print(f"{self.user} is ready!")
 
 client = aclient()
 guild = discord.Object(id=GUILD)
@@ -74,7 +74,7 @@ TARGET_TIMES = [
     (5, 0),
     (11, 0),
     (17, 0),
-    (21, 48),
+    (22, 49),
     (23, 0)
 ]
 
