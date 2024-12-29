@@ -65,6 +65,52 @@ def get_reset_time():
 @tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
+
+ROLE_ID = 1323023802409554050
+CHANNEL_ID = 1321452634284232777
+STICKER_ID = 1321509575303893053
+
+def seconds_until_5am_utc():
+    now = datetime.datetime.utcnow()
+    target = now.replace(hour=5, minute=0, second=0, microsecond=0)
+    if target < now:
+        target += datetime.timedelta(days=1)
+    return (target - now).total_seconds()
+
+@tasks.loop(minutes=5)
+async def ping_role_every_6h():
+    channel = bot.get_channel(CHANNEL_ID)
+    if not channel:
+        return
+
+    # Fetch the sticker object. This requires correct permissions and the sticker must be in the same guild.
+    # If fetch_sticker() fails, handle the exception or skip adding the sticker.
+    try:
+        sticker = await bot.fetch_sticker(STICKER_ID)
+    except:
+        sticker = None
+
+    embed = discord.Embed(
+        title="Friendly Reminder!",
+        description=f"<@&{ROLE_ID}> Remember to pick up your free supplies from the shop!",
+        color=0x3498db
+    )
+    # Optionally set the sticker image in the embed:
+    if sticker:
+        embed.set_image(url=sticker.url)
+
+    # Send the embed with the sticker attached (Discord will display it below the embed)
+    await channel.send(embed=embed, sticker=sticker)
+
+@ping_role_every_6h.before_loop
+async def before_ping_role_every_6h():
+    # Wait until the next 5 AM UTC
+    await asyncio.sleep(seconds_until_5am_utc())
+
+@bot.event
+async def on_ready():
+    ping_role_every_6h.start()
+    print(f"Logged in as {client.user}")
         
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
