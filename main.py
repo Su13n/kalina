@@ -77,7 +77,7 @@ TARGET_TIMES = [
     (23, 0)
 ]
 
-def schedule_next():
+def schedule_next_reminder():
     now = datetime.datetime.utcnow()
     next_run = None
 
