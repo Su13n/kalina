@@ -75,7 +75,7 @@ def seconds_until_5am_utc():
     now = datetime.utcnow()
     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
     if target < now:
-        target += datetime.timedelta(days=1)
+        target += timedelta(days=1)
     return (target - now).total_seconds()
 
 @tasks.loop(seconds=10)
@@ -106,7 +106,9 @@ async def ping_role_every_6h():
 @ping_role_every_6h.before_loop
 async def before_ping_role_every_6h():
     # Wait until the next 5 AM UTC
-    await asyncio.sleep(seconds_until_5am_utc())
+    diff = seconds_until_5am_utc()
+    if diff > 0:
+        await asyncio.sleep(diff)
 
 @client.event
 async def on_ready():
