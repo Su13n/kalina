@@ -73,11 +73,11 @@ TARGET_TIMES = [
     (5, 0),
     (11, 0),
     (17, 0),
-    (21, 39),
+    (21, 41),
     (23, 0)
 ]
 
-def schedule_next_reminder():
+async def schedule_next_reminder():
     now = datetime.datetime.utcnow()
     next_run = None
 
@@ -102,32 +102,30 @@ def schedule_next_reminder():
     # Schedule the task
     threading.Timer(wait_seconds, task).start()
 
-def task():
+async def task():
     print("Sending message...")
     supply_reminder()
     # Reschedule for the next time
     schedule_next()
 
-
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
-    while True:
-        try:
-            sticker = await client.fetch_sticker(1323038318363152446)
-        except:
-            sticker = None
+    try:
+        sticker = await client.fetch_sticker(1323038318363152446)
+    except:
+        sticker = None
 
-        embed = discord.Embed(
-            title="Friendly Reminder!",
-            description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
-            color=0x3498db
-        )
-        # Optionally set the sticker image in the embed:
-        if sticker:
-            embed.set_image(url=sticker.url)
+    embed = discord.Embed(
+        title="Friendly Reminder!",
+        description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
+        color=0x3498db
+    )
+    # Optionally set the sticker image in the embed:
+    if sticker:
+        embed.set_image(url=sticker.url)
 
-        # Send the embed with the sticker attached (Discord will display it below the embed)
-        await channel.send(embed=embed)
+    # Send the embed with the sticker attached (Discord will display it below the embed)
+    await channel.send(embed=embed)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
