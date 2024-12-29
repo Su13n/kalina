@@ -65,7 +65,7 @@ def get_reset_time():
 
 @tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
-    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
+    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset. T", ephemeral=True)
 
 @tree.command(name = "testcommand", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
