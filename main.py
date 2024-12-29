@@ -1,8 +1,9 @@
 import os
+import asyncio
 from more_itertools import sliced
 import discord
 from discord import app_commands
-from discord.ext import commands
+from discord.ext import tasks, commands
 from io import BytesIO
 import requests
 import re
@@ -71,22 +72,22 @@ CHANNEL_ID = 1321452634284232777
 STICKER_ID = 1321509575303893053
 
 def seconds_until_5am_utc():
-    now = datetime.datetime.utcnow()
+    now = datetime.utcnow()
     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
     if target < now:
         target += datetime.timedelta(days=1)
     return (target - now).total_seconds()
 
-@tasks.loop(minutes=5)
+@tasks.loop(seconds=10)
 async def ping_role_every_6h():
-    channel = bot.get_channel(CHANNEL_ID)
+    channel = client.get_channel(CHANNEL_ID)
     if not channel:
         return
 
     # Fetch the sticker object. This requires correct permissions and the sticker must be in the same guild.
     # If fetch_sticker() fails, handle the exception or skip adding the sticker.
     try:
-        sticker = await bot.fetch_sticker(STICKER_ID)
+        sticker = await client.fetch_sticker(STICKER_ID)
     except:
         sticker = None
 
@@ -107,7 +108,7 @@ async def before_ping_role_every_6h():
     # Wait until the next 5 AM UTC
     await asyncio.sleep(seconds_until_5am_utc())
 
-@bot.event
+@client.event
 async def on_ready():
     ping_role_every_6h.start()
     print(f"Logged in as {client.user}")
