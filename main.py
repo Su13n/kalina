@@ -69,15 +69,15 @@ async def embed_create(interaction: discord.Interaction):
 
 @tasks.loop(seconds=10)
 async def supply_reminder():
-    channel = client.get_channel(CHANNEL_ID)
+    channel = client.get_channel(1321452634284232777)
     try:
-        sticker = await client.fetch_sticker(STICKER_ID)
+        sticker = await client.fetch_sticker(1321509575303893053)
     except:
         sticker = None
 
     embed = discord.Embed(
         title="Friendly Reminder!",
-        description=f"<@&{ROLE_ID}> Remember to pick up your free supplies from the shop!",
+        description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
         color=0x3498db
     )
     # Optionally set the sticker image in the embed:
