@@ -86,7 +86,7 @@ async def schedule_next_reminder():
         if candidate > now:
             next_run = candidate
             break
-
+    print(next_run)
     # If all times today have passed, schedule tomorrow at the first time
     if not next_run:
         next_run = now + timedelta(days=1)
