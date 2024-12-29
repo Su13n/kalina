@@ -91,7 +91,7 @@ async def supply_reminder():
 async def supply_reminder_before_loop():
     await client.wait_until_ready()
     
-supply_reminder().start()
+supply_reminder.start()
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
