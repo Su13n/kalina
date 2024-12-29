@@ -73,7 +73,7 @@ CHANNEL_ID = 1321452634284232777
 STICKER_ID = 1321509575303893053
 
 @tree.command(name = "remindertest", guild=discord.Object(id=GUILD))
-async def remindertest():
+async def remindertest(interaction: discord.Interaction):
     channel = client.get_channel(CHANNEL_ID)
     if not channel:
         print("Failed to get channel")
