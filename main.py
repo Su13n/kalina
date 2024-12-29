@@ -10,6 +10,7 @@ import re
 from datetime import datetime, timedelta
 from textwrap import wrap
 from dotenv import load_dotenv
+import threading
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -68,11 +69,27 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
+def checkTime():
+    # This function runs periodically every 1 second
+    threading.Timer(1, checkTime).start()
+
+    now = datetime.utcnow()
+    target = now.replace(hour=5, minute=0, second=0, microsecond=0)
+
+    current_time = now.strftime("%H:%M:%S")
+    print("Current Time =", current_time)
+
+    if(current_time == '02:11:00'):  # check if matches with the desired time
+        print('sending message')
+
+
+checkTime()
+
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
     while True:
         try:
-            sticker = await client.fetch_sticker(1321509575303893053)
+            sticker = await client.fetch_sticker(1323038318363152446)
         except:
             sticker = None
 
