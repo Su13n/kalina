@@ -73,7 +73,7 @@ TARGET_TIMES = [
     (5, 0),
     (11, 0),
     (17, 0),
-    (21, 42),
+    (21, 43),
     (23, 0)
 ]
 
@@ -100,7 +100,7 @@ async def schedule_next_reminder():
     # Calculate how many seconds to wait until next run
     wait_seconds = (next_run - now).total_seconds()
     # Schedule the task
-    threading.Timer(wait_seconds, task).start()
+    await threading.Timer(wait_seconds, task).start()
 
 async def task():
     print("Sending message...")
