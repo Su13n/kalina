@@ -30,7 +30,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        await supply_reminder()
+        await schedule_next_reminder()
 
 client = aclient()
 guild = discord.Object(id=GUILD)
@@ -69,21 +69,45 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-def checkTime():
-    # This function runs periodically every 1 second
-    threading.Timer(1, checkTime).start()
+TARGET_TIMES = [
+    (5, 0),
+    (11, 0),
+    (17, 0),
+    (21, 39),
+    (23, 0)
+]
 
-    now = datetime.utcnow()
-    target = now.replace(hour=5, minute=0, second=0, microsecond=0)
+def schedule_next():
+    now = datetime.datetime.utcnow()
+    next_run = None
 
-    current_time = now.strftime("%H:%M:%S")
-    print("Current Time =", current_time)
+    for hour, minute in TARGET_TIMES:
+        candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        if candidate > now:
+            next_run = candidate
+            break
 
-    if(current_time == '02:11:00'):  # check if matches with the desired time
-        print('sending message')
+    # If all times today have passed, schedule tomorrow at the first time
+    if not next_run:
+        next_run = now + datetime.timedelta(days=1)
+        next_run = next_run.replace(
+            hour=TARGET_TIMES[0][0],
+            minute=TARGET_TIMES[0][1],
+            second=0,
+            microsecond=0
+        )
 
+    # Calculate how many seconds to wait until next run
+    wait_seconds = (next_run - now).total_seconds()
+    # Schedule the task
+    threading.Timer(wait_seconds, task).start()
 
-checkTime()
+def task():
+    print("Sending message...")
+    supply_reminder()
+    # Reschedule for the next time
+    schedule_next()
+
 
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
@@ -104,7 +128,6 @@ async def supply_reminder():
 
         # Send the embed with the sticker attached (Discord will display it below the embed)
         await channel.send(embed=embed)
-        await asyncio.sleep(10)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
