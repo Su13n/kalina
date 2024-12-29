@@ -97,7 +97,7 @@ async def remindertest(interaction: discord.Interaction):
         embed.set_image(url=sticker.url)
 
     # Send the embed with the sticker attached (Discord will display it below the embed)
-    await channel.send(embed=embed, sticker=sticker)
+    await interaction.response.send_message(embed=embed, sticker=sticker)
 
 
 
