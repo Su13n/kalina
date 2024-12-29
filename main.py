@@ -70,23 +70,24 @@ async def embed_create(interaction: discord.Interaction):
 
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
-    try:
-        sticker = await client.fetch_sticker(1321509575303893053)
-    except:
-        sticker = None
+    while True:
+        try:
+            sticker = await client.fetch_sticker(1321509575303893053)
+        except:
+            sticker = None
 
-    embed = discord.Embed(
-        title="Friendly Reminder!",
-        description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
-        color=0x3498db
-    )
-    # Optionally set the sticker image in the embed:
-    if sticker:
-        embed.set_image(url=sticker.url)
+        embed = discord.Embed(
+            title="Friendly Reminder!",
+            description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
+            color=0x3498db
+        )
+        # Optionally set the sticker image in the embed:
+        if sticker:
+            embed.set_image(url=sticker.url)
 
-    # Send the embed with the sticker attached (Discord will display it below the embed)
-    await channel.send(embed=embed, sticker=sticker)
-    await asyncio.sleep(10)
+        # Send the embed with the sticker attached (Discord will display it below the embed)
+        await channel.send(embed=embed, sticker=sticker)
+        await asyncio.sleep(10)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
