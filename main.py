@@ -67,7 +67,7 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=10, guild=discord.Object(id=GUILD))
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)
     try:
