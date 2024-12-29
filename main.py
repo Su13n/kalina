@@ -29,7 +29,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        supply_reminder()
+        await supply_reminder()
 
 client = aclient()
 guild = discord.Object(id=GUILD)
