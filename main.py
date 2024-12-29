@@ -67,13 +67,17 @@ def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
+@tree.command(name = "testcommand", guild=discord.Object(id=GUILD))
+async def embed_create(interaction: discord.Interaction):
+    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
+
 
 ROLE_ID = 1323023802409554050
 CHANNEL_ID = 1321452634284232777
 STICKER_ID = 1321509575303893053
 
 @tree.command(name = "remindertest", guild=discord.Object(id=GUILD))
-async def remindertest(interaction: discord.Interaction):
+async def embed_create(interaction: discord.Interaction):
     channel = client.get_channel(CHANNEL_ID)
     if not channel:
         print("Failed to get channel")
