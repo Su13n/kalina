@@ -73,12 +73,12 @@ TARGET_TIMES = [
     (5, 0),
     (11, 0),
     (17, 0),
-    (21, 41),
+    (21, 42),
     (23, 0)
 ]
 
 async def schedule_next_reminder():
-    now = datetime.datetime.utcnow()
+    now = datetime.utcnow()
     next_run = None
 
     for hour, minute in TARGET_TIMES:
@@ -89,7 +89,7 @@ async def schedule_next_reminder():
 
     # If all times today have passed, schedule tomorrow at the first time
     if not next_run:
-        next_run = now + datetime.timedelta(days=1)
+        next_run = now + timedelta(days=1)
         next_run = next_run.replace(
             hour=TARGET_TIMES[0][0],
             minute=TARGET_TIMES[0][1],
