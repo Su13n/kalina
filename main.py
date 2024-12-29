@@ -30,7 +30,8 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        await schedule_next_reminder()
+        self.loop.create_task(schedule_next_reminder())
+        print("{self.user} is ready!")
 
 client = aclient()
 guild = discord.Object(id=GUILD)
@@ -73,45 +74,47 @@ TARGET_TIMES = [
     (5, 0),
     (11, 0),
     (17, 0),
-    (21, 43),
+    (21, 48),
     (23, 0)
 ]
 
 async def schedule_next_reminder():
-    now = datetime.utcnow()
-    next_run = None
+    while True:
+        now = datetime.utcnow()
+        next_run = None
+        for hour, minute in TARGET_TIMES:
+            candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            if candidate > now:
+                next_run = candidate
+                break
+        
+        # If all times passed for today, schedule tomorrow's first time
+        if not next_run:
+            next_run = now + timedelta(days=1)
+            next_run = next_run.replace(
+                hour=TARGET_TIMES[0][0],
+                minute=TARGET_TIMES[0][1],
+                second=0,
+                microsecond=0
+            )
 
-    for hour, minute in TARGET_TIMES:
-        candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
-        if candidate > now:
-            next_run = candidate
-            break
-    print(next_run)
-    # If all times today have passed, schedule tomorrow at the first time
-    if not next_run:
-        next_run = now + timedelta(days=1)
-        next_run = next_run.replace(
-            hour=TARGET_TIMES[0][0],
-            minute=TARGET_TIMES[0][1],
-            second=0,
-            microsecond=0
-        )
-
-    # Calculate how many seconds to wait until next run
-    wait_seconds = (next_run - now).total_seconds()
-    # Schedule the task
-    await threading.Timer(wait_seconds, task).start()
+        wait_seconds = (next_run - now).total_seconds()
+        print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds).")
+        
+        # Sleep until the next reminder time
+        await asyncio.sleep(wait_seconds)
+        
+        # Send the reminder
+        await task()
 
 async def task():
     print("Sending message...")
-    supply_reminder()
-    # Reschedule for the next time
-    schedule_next()
+    await supply_reminder()
 
 async def supply_reminder():
-    channel = client.get_channel(1321452634284232777)
+    channel = client.get_channel(1321452634284232777)  # Replace with valid channel ID
     try:
-        sticker = await client.fetch_sticker(1323038318363152446)
+        sticker = await client.fetch_sticker(1323038318363152446)  # Replace with valid sticker ID
     except:
         sticker = None
 
@@ -120,11 +123,9 @@ async def supply_reminder():
         description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
         color=0x3498db
     )
-    # Optionally set the sticker image in the embed:
     if sticker:
         embed.set_image(url=sticker.url)
 
-    # Send the embed with the sticker attached (Discord will display it below the embed)
     await channel.send(embed=embed)
 
 @tree.context_menu(name='Report Message', guild=guild)
