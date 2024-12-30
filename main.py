@@ -159,6 +159,57 @@ DOLL_IMAGES = {
     "ullrid": [
         "https://iopwiki.com/images/thumb/a/af/Ullrid_Whole.png/1280px-Ullrid_Whole.png"
     ],
+    "vector": [
+        "https://iopwiki.com/images/c/c0/Vector_Whole.png",
+        "https://iopwiki.com/images/e/e7/Vector_%28GFL2%29_3D.png"
+    ],
+    "springfield": [
+        "https://iopwiki.com/images/8/81/Springfield_%28GFL2%29_whole.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_SpringfieldSSR01.png",
+        "https://iopwiki.com/images/5/54/Springfield_%28GFL2%29_3D.png"
+    ],
+    "mechty": [
+        "https://iopwiki.com/images/thumb/a/a4/Mechty_Whole.png/1280px-Mechty_Whole.png",
+        "https://iopwiki.com/images/2/2c/Mechty_3D.png"
+    ],
+    "lenna": [
+        "https://iopwiki.com/images/thumb/8/8f/Lenna_Whole.png/800px-Lenna_Whole.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LennaSSR01.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LennaSSR05.png",
+        "https://iopwiki.com/images/d/d6/Lenna_3D.png"
+    ],
+    "centaureissi": [
+        "https://iopwiki.com/images/thumb/3/32/Centaureissi_Whole.png/1280px-Centaureissi_Whole.png",
+        "https://iopwiki.com/images/0/0d/Centaureissi_%28GFL2%29_3D.png"
+    ],
+    "dushevnaya": [
+        "https://iopwiki.com/images/thumb/2/2a/Dushevnaya_Whole.png/1024px-Dushevnaya_Whole.png",
+        "https://iopwiki.com/images/2/27/Dushevnaya_%28GFL2%29_3D.png"
+    ],
+    "daiyan": [
+        "https://iopwiki.com/images/thumb/c/cc/Daiyan_Whole.png/1024px-Daiyan_Whole.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_DaiyanSSR03.png",
+        "https://iopwiki.com/images/b/b5/Daiyan_%28GFL2%29_3D.png"
+
+    ],
+    "zhaohui": [
+        "https://iopwiki.com/images/thumb/7/7b/Zhaohui_Whole.png/1280px-Zhaohui_Whole.png",
+        "https://iopwiki.com/images/thumb/e/e5/Zhaohui_costume1.png/1280px-Zhaohui_costume1.png",
+        "https://iopwiki.com/images/3/31/Zhaohui_3D.png"
+    ],
+    "belka": [
+        "https://iopwiki.com/images/thumb/8/8d/Belka_Whole.png/1280px-Belka_Whole.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_BiyocaSSR01.png",
+        "https://iopwiki.com/images/b/b0/Belka_3D.png"
+    ],
+    "faye": [
+        "https://iopwiki.com/images/e/e1/Faye_whole.png",
+        "https://iopwiki.com/images/4/4a/Faye_3D.png"
+    ],
+    "jiangyu": [
+        "https://iopwiki.com/images/thumb/c/c8/Jiangyu_Whole.png/1280px-Jiangyu_Whole.png",
+        "https://iopwiki.com/images/thumb/4/48/Jiangyu_%28GFL2%29_3D.png/1280px-Jiangyu_%28GFL2%29_3D.png"
+    ]
 
 
 }
@@ -185,7 +236,17 @@ DOLL_NAMES = {
    "papasha": ["ppsh", "papasha"],
    "peritya": ["peritya", "cat", "catgirl"],
    "ullrid": ["ullrid"],
-   "suomi": ["suo", "suomi"]
+   "suomi": ["suo", "suomi"],
+   "vector": ["vector"],
+   "springfield": ["springfield"],
+   "mechty": ["mechty", "g11"],
+   "lenna": ["lenna", "ump9", "ump-9"],
+   "centaureissi": ["centaureissi", "g36"],
+   "dushevnaya": ["dush", "dushev", "dushevnaya", "ksvk"],
+   "daiyan": ["type95", "daiyan", "type 95"],
+   "zhaohui": ["zhaohui"],
+   "jiangyu": ["jianyu", "type97", "type 97"]
+
 
 }
 
