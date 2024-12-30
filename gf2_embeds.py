@@ -100,55 +100,55 @@ def get_andoris():
     
     return embed
 
-def get_klukai():
-    embed = discord.Embed(title="Clukay",
-                        url="https://iopwiki.com/wiki/Klukai",
-                        colour=0xf40068)
+# def get_klukai():
+#     embed = discord.Embed(title="Clukay",
+#                         url="https://iopwiki.com/wiki/Klukai",
+#                         colour=0xf40068)
 
-    embed.set_author(name="IOP Wiki",
-                    url="https://iopwiki.com/",
-                    icon_url="https://iopwiki.com/favicon.ico")
+#     embed.set_author(name="IOP Wiki",
+#                     url="https://iopwiki.com/",
+#                     icon_url="https://iopwiki.com/favicon.ico")
 
-    embed.add_field(name="Rarity",
-                    value="Elite",
-                    inline=True)
-    embed.add_field(name="Affiliation",
-                    value="H.I.D.E 404",
-                    inline=True)
-    embed.add_field(name="Body type",
-                    value="SST-05",
-                    inline=False)
-    embed.add_field(name="Role",
-                    value="Sentinel",
-                    inline=True)
-    embed.add_field(name="Speciality",
-                    value="?",
-                    inline=False)
-    embed.add_field(name="Signature Weapon",
-                    value="HK416",
-                    inline=True)
-    embed.add_field(name="Weapon Type",
-                    value="AR",
-                    inline=True)
-    embed.add_field(name="Imprint Boost",
-                    value="[Scylla](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
-                    inline=False)
-    embed.add_field(name="Affinities",
-                    value="Medium Ammo / Corrosion",
-                    inline=True)
-    embed.add_field(name="Weaknesses",
-                    value="Shotgun Ammo / Electric",
-                    inline=True)
-    embed.add_field(name="Personality",
-                    value="?",
-                    inline=False)
+#     embed.add_field(name="Rarity",
+#                     value="Elite",
+#                     inline=True)
+#     embed.add_field(name="Affiliation",
+#                     value="H.I.D.E 404",
+#                     inline=True)
+#     embed.add_field(name="Body type",
+#                     value="SST-05",
+#                     inline=False)
+#     embed.add_field(name="Role",
+#                     value="Sentinel",
+#                     inline=True)
+#     embed.add_field(name="Speciality",
+#                     value="?",
+#                     inline=False)
+#     embed.add_field(name="Signature Weapon",
+#                     value="HK416",
+#                     inline=True)
+#     embed.add_field(name="Weapon Type",
+#                     value="AR",
+#                     inline=True)
+#     embed.add_field(name="Imprint Boost",
+#                     value="[Scylla](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
+#                     inline=False)
+#     embed.add_field(name="Affinities",
+#                     value="Medium Ammo / Corrosion",
+#                     inline=True)
+#     embed.add_field(name="Weaknesses",
+#                     value="Shotgun Ammo / Electric",
+#                     inline=True)
+#     embed.add_field(name="Personality",
+#                     value="?",
+#                     inline=False)
 
-    embed.set_thumbnail(url="https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png")
+#     embed.set_thumbnail(url="https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png")
 
-    embed.set_footer(text="Azure",
-                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
+#     embed.set_footer(text="Azure",
+#                     icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
 
-    return embed
+#     return embed
 
 def get_qiongjiu():
     embed = discord.Embed(title="Qiongjiu",
@@ -299,3 +299,51 @@ def get_nagant():
                     icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
 
     return embed
+
+def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, signature, weapon_type, imprint_name, affinity, weakness, personality, thumbnail):
+    embed = discord.Embed(title=name,
+                      url=iop_url,
+                      colour=0xf40068)
+
+    embed.set_author(name="IOP Wiki",
+                    url="https://iopwiki.com/",
+                    icon_url="https://iopwiki.com/favicon.ico")
+
+    embed.add_field(name="Rarity",
+                    value=rarity,
+                    inline=True)
+    embed.add_field(name="Affiliation",
+                    value=affiliation
+                    inline=True)
+    embed.add_field(name="Body type",
+                    value=body_type,
+                    inline=False)
+    embed.add_field(name="Role",
+                    value=role,
+                    inline=True)
+    embed.add_field(name="Speciality",
+                    value=speciality,
+                    inline=False)
+    embed.add_field(name="Signature Weapon",
+                    value=signature,
+                    inline=True)
+    embed.add_field(name="Weapon Type",
+                    value=weapon_type,
+                    inline=True)
+    embed.add_field(name="Imprint Boost",
+                    value=f"[{imprint_name}](https://iopwiki.com/wiki/GFL2_Weapons#{weapon_type})",
+                    inline=False)
+    embed.add_field(name="Affinities",
+                    value=affinity",
+                    inline=True)
+    embed.add_field(name="Weaknesses",
+                    value=weakness,
+                    inline=True)
+    embed.add_field(name="Personality",
+                    value=personality,
+                    inline=False)
+
+    embed.set_thumbnail(url=thumbnail)
+
+    embed.set_footer(text="Azure",
+                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
