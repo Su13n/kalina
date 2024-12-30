@@ -107,6 +107,7 @@ DOLL_NAMES = {
    "qiongiu": ["qiongjiu", "qj"],
    "mosin": ["mosin", "mosin-nagant"],
    "nagant": ["nagant"],
+   "sharkry": ["sharkry"]
 
 }
 
