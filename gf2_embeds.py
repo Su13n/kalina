@@ -313,7 +313,7 @@ def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, si
                     value=rarity,
                     inline=True)
     embed.add_field(name="Affiliation",
-                    value=affiliation
+                    value=affiliation,
                     inline=True)
     embed.add_field(name="Body type",
                     value=body_type,
