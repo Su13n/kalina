@@ -31,7 +31,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        self.loop.create_task(schedule_next_reminder())
+        await self.loop.create_task(schedule_next_reminder())
         print(f"{self.user} is ready!")
 
 client = aclient()
@@ -49,16 +49,6 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
     else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         
-# @tree.command(name = "embededit", guild=discord.Object(id=GUILD))
-# async def embed_create(interaction: discord.Interaction):
-#     if interaction.user.id == 224589196235505665:
-#         embed = discord.Embed(title="**Placeholder Embed**")
-#         embed.add_field(name="placeholder 📷", value="placeholder value.", inline=False)
-#         embed.set_thumbnail(url = "https://agilevelocity.com/wp-content/uploads/2018/03/work-98936_1280-300x300-1.png")
-#         await interaction.channel.send(embed=embed)
-#     else:
-#         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
-
 def get_reset_time():
     now = datetime.utcnow()
     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
@@ -67,7 +57,7 @@ def get_reset_time():
     time_left = target - now 
     return f"{time_left.seconds // 3600}h {time_left.seconds % 3600 // 60}m"
 
-@tree.command(name = "dailyreset", guild=discord.Object(id=GUILD))
+@tree.command(name = "dailyreset", description="Shows how many hours are left until daily reset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
