@@ -397,7 +397,7 @@ DOLL_DATA = {
 }
 
 def get_embed(doll_name: str) -> discord.Embed:
-    data = DOLL_DATA.get(doll_name)
+    data = DOLL_DATA[doll_name]
     if not data:
         return None  # or handle error differently
     print(f"in get_embed\ndata name: {data["name"]}")
