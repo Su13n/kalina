@@ -334,7 +334,7 @@ def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, si
                     value=f"[{imprint_name}](https://iopwiki.com/wiki/GFL2_Weapons#{weapon_type})",
                     inline=False)
     embed.add_field(name="Affinities",
-                    value=affinity",
+                    value=affinity,
                     inline=True)
     embed.add_field(name="Weaknesses",
                     value=weakness,
