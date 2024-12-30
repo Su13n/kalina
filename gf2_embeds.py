@@ -431,4 +431,5 @@ def get_embed(doll_name: str) -> discord.Embed:
         text="Azure",
         icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp"
     )
+    print("everything fine")
     return embed
