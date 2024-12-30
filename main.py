@@ -39,12 +39,14 @@ guild = discord.Object(id=GUILD)
 tree = app_commands.CommandTree(client)
 
 
-@tree.command(name = "embedcreate", guild=discord.Object(id=GUILD))
-async def embed_create(interaction: discord.Interaction):
-    if interaction.user.id == 224589196235505665:
+@tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
+@app_commands.describe(doll="The doll you want to see information of")
+async def embed_create(interaction: discord.Interaction, doll: doll):
+    doll = doll.lower()
+    if doll == "wawa" or doll == "wa2000" or doll == "maki" or doll == "makiatto":
         await interaction.channel.send(embed=gf2_embeds.get_makiatto())
     else:
-        await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
+        await interaction.response.send_message("Something went wrong. Please contact Suzu.", ephemeral=True)
         
 # @tree.command(name = "embededit", guild=discord.Object(id=GUILD))
 # async def embed_create(interaction: discord.Interaction):
