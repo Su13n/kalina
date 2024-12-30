@@ -18,6 +18,12 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 intents = discord.Intents.all()
 intents.members = True
+TARGET_TIMES = [
+    (5, 0),
+    (11, 0),
+    (17, 0),
+    (23, 0)
+]
 
 class aclient(discord.Client):
     def __init__(self):
@@ -31,7 +37,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        await self.loop.create_task(schedule_next_reminder())
+        #await self.loop.create_task(schedule_next_reminder())
         print(f"{self.user} is ready!")
 
 client = aclient()
@@ -49,7 +55,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
     else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         
-def get_reset_time():
+async def get_reset_time():
     now = datetime.utcnow()
     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
     if now.hour > 5:
@@ -60,13 +66,6 @@ def get_reset_time():
 @tree.command(name = "dailyreset", description="Shows how many hours are left until daily reset", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
-
-TARGET_TIMES = [
-    (5, 0),
-    (11, 0),
-    (17, 0),
-    (23, 0)
-]
 
 async def schedule_next_reminder():
     while True:
