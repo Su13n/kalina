@@ -159,7 +159,7 @@ DOLL_IMAGES = {
     "ullrid": [
         "https://iopwiki.com/images/thumb/a/af/Ullrid_Whole.png/1280px-Ullrid_Whole.png"
     ],
-    
+
 
 }
 
@@ -184,7 +184,7 @@ DOLL_NAMES = {
    "tololo": ["tll", "tololo"],
    "papasha": ["ppsh", "papasha"],
    "peritya": ["peritya", "cat", "catgirl"],
-
+   "ullrid": ["ullrid"]
 
 }
 
