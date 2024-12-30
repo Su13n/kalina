@@ -124,13 +124,18 @@ async def embed_create(interaction: discord.Interaction, doll: str):
             print(f"Normalised: {normalized}\nOrig. input: {doll}\nCN: {canonical_name}\n\n")
             base_embed = gf2_embeds.get_embed(canonical_name)
             images = DOLL_IMAGES[canonical_name]
-            break
+            view = DollView(base_embed, images)
+            # Set the embed image to the first one by default
+            embed = base_embed.copy()
+            embed.set_image(url=images[0])
+            await interaction.response.send_message(embed=embed, view=view)
+        elif:
+            await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+        return
 
     # If not in dictionary, respond ephemeral
-    if not base_embed:
-        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-    return
-    print("so far so good")
+    
+    # print("so far so good")
     # if normalized in DOLL_NAMES["makiatto"]:
     #     base_embed = gf2_embeds.get_makiatto()
     #     images = DOLL_IMAGES["makiatto"]
@@ -150,12 +155,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     #     await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
     #     return
 
-    view = DollView(base_embed, images)
-    # Set the embed image to the first one by default
-    embed = base_embed.copy()
-    embed.set_image(url=images[0])
-    await interaction.response.send_message(embed=embed, view=view)
-
+    
 
 async def get_reset_time():
     now = datetime.utcnow()
