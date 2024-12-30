@@ -77,11 +77,18 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/9/98/Macqiato_costume1.png/1280px-Macqiato_costume1.png"
     ],
     "klukai": [
-        "https://example.com/klukai1.png",
-        "https://example.com/klukai2.png"
+        "https://iopwiki.com/images/thumb/e/e4/Klukai_Whole.png/1280px-Klukai_Whole.png",
+        "https://iopwiki.com/images/thumb/c/c9/Klukai_costume1.png/1280px-Klukai_costume1.png",
+        "https://iopwiki.com/images/thumb/d/d0/Klukai_costume2.png/1280px-Klukai_costume2.png"
     ],
     # ...
 }
+
+DOLL_NAMES = {
+   "makiatto": ["makiatto", "wa2000", "wawa", "wa2k", "maki"],
+   "klukai": ["klukai", "clukay", "klukay", "416", "hk416"]
+}
+
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
@@ -94,10 +101,10 @@ async def embed_create(interaction: discord.Interaction, doll: str):
 
     # Build your base embed from your existing function
     # e.g. get_makiatto() can be split into get_base_makiatto() (embed w/o images)
-    if normalized in ["makiatto", "wa2000", "wawa", "wa2k", "maki"]:
+    if normalized in DOLL_NAMES["makiatto"]:
         base_embed = gf2_embeds.get_makiatto()
         images = DOLL_IMAGES["makiatto"]
-    elif normalized in ["klukai", "416", "hk416"]:
+    elif normalized in DOLL_NAMES["klukai"]:
         base_embed = gf2_embeds.get_klukai()
         images = DOLL_IMAGES["klukai"]
     else:
