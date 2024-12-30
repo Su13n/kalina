@@ -105,6 +105,17 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/5/51/Colphne_Whole.png",
         "https://iopwiki.com/images/thumb/e/ef/Colphne_costume1.png/1280px-Colphne_costume1.png"
     ],
+    "groza": [
+        "https://iopwiki.com/images/thumb/2/24/Groza_Whole.png/1024px-Groza_Whole.png",
+        "https://iopwiki.com/images/thumb/3/3f/Groza_costume3.png/1280px-Groza_costume3.png",
+        "https://iopwiki.com/images/thumb/e/ec/Groza_costume1.png/1280px-Groza_costume1.png",
+        "https://iopwiki.com/images/thumb/b/bb/Groza_costume2.png/1280px-Groza_costume2.png"
+    ],
+    "krolik": [
+        "https://iopwiki.com/images/thumb/d/d8/Charolic_Whole.png/1280px-Charolic_Whole.png",
+        "https://iopwiki.com/images/thumb/d/d4/Krolik_costume2.png/1280px-Krolik_costume2.png",
+        "https://iopwiki.com/images/thumb/1/1a/Charolic_costume1.png/1280px-Charolic_costume1.png"
+    ]
 
 
 }
@@ -119,8 +130,10 @@ DOLL_NAMES = {
    "sharkry": ["sharkry"],
    "cheeta": ["cheeta", "mp7"],
    "colphne": ["colphne"],
+   "groza": ["groza", "ots", "ots-14", "ots14"],
+   "krolik": ["krolik"],
 
-
+   
 }
 
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
