@@ -118,6 +118,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     base_embed, images = None, None
     
     for canonical_name, aliases in DOLL_NAMES.items():
+        print(f"CN: {canonical_name}\nAliases: {aliases}\n\n")
         if normalized in aliases:
             base_embed = gf2_embeds.get_embed(canonical_name)
             images = DOLL_IMAGES[canonical_name]
@@ -143,7 +144,6 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     # elif normalized in DOLL_NAMES["andoris"]:
     #     base_embed = gf2_embeds.get_andoris()
     #     images = DOLL_IMAGES["andoris"]
-    # elif normalized
     # else:
     #     await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
     #     return
