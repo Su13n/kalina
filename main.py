@@ -113,7 +113,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     normalized = doll.lower()
 
     # If not in dictionary, respond ephemeral
-    if normalized not in DOLL_IMAGES:
+    if normalized not in DOLL_NAMES:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         return
 
