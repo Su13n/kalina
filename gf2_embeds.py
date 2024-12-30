@@ -370,6 +370,22 @@ DOLL_DATA = {
         "personality": "Friendliness",
         "thumbnail": "https://iopwiki.com/images/thumb/5/52/Vepley_S.png"
     },
+    "peri": {
+        "name": "Peri",
+        "iop_url": "https://iopwiki.com/wiki/Peri",
+        "rarity": "Elite",
+        "affiliation": "[Elmo](https://iopwiki.com/wiki/Elmo) MCV",
+        "body_type": "SSD-62D",
+        "role": "Bulwark",
+        "specialty": "?",
+        "signature": "HK MP5",
+        "weapon_type": "SMG",
+        "imprint_name": "Emerita",
+        "affinity": "Light Ammo / Burn",
+        "weakness": "Heavy Ammo / ?",
+        "personality": "?",
+        "thumbnail": "https://imgur.com/yFq7EGH"
+    },
     "nagant": {
         "name": "Nagant",
         "iop_url": "https://iopwiki.com/wiki/Nagant",

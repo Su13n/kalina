@@ -74,90 +74,112 @@ class DollView(discord.ui.View):
 DOLL_IMAGES = {
     "makiatto": [
         "https://iopwiki.com/images/3/33/Macqiato_Whole.png",
-        "https://iopwiki.com/images/thumb/9/98/Macqiato_costume1.png/1280px-Macqiato_costume1.png"
+        "https://iopwiki.com/images/thumb/9/98/Macqiato_costume1.png/1280px-Macqiato_costume1.png",
+        "https://iopwiki.com/images/thumb/a/a8/Macqiato_3D.png/1280px-Macqiato_3D.png"
     ],
     "klukai": [
         "https://iopwiki.com/images/thumb/e/e4/Klukai_Whole.png/1280px-Klukai_Whole.png",
         "https://iopwiki.com/images/thumb/c/c9/Klukai_costume1.png/1280px-Klukai_costume1.png",
-        "https://iopwiki.com/images/thumb/d/d0/Klukai_costume2.png/1280px-Klukai_costume2.png"
+        "https://iopwiki.com/images/thumb/d/d0/Klukai_costume2.png/1280px-Klukai_costume2.png",
+        "https://iopwiki.com/images/0/0d/Klukai_3D.png"
     ],
     "andoris": [
         "https://iopwiki.com/images/thumb/4/47/Andoris_Whole.png/1280px-Andoris_Whole.png",
+        "https://iopwiki.com/images/2/29/Andoris_3D.png"
     ],
     "qiongjiu": [
         "https://iopwiki.com/images/thumb/e/ee/Qiongjiu_Whole.png/800px-Qiongjiu_Whole.png",
+        "https://iopwiki.com/images/d/d2/Qiongju_3D.png"
     ],
     "mosin": [
-        "https://iopwiki.com/images/thumb/3/39/Mosinnagant_Whole.png/1280px-Mosinnagant_Whole.png"
+        "https://iopwiki.com/images/thumb/3/39/Mosinnagant_Whole.png/1280px-Mosinnagant_Whole.png",
+        "https://iopwiki.com/images/thumb/6/6a/Mosin-Nagant_%28GFL2%29_3D.png/1280px-Mosin-Nagant_%28GFL2%29_3D.png"
     ],
     "nagant": [
         "https://iopwiki.com/images/thumb/6/61/Nagant_Whole.png/800px-Nagant_Whole.png",
-        "https://iopwiki.com/images/thumb/c/c1/Nagant_costume1.png/1280px-Nagant_costume1.png"
+        "https://iopwiki.com/images/thumb/c/c1/Nagant_costume1.png/1280px-Nagant_costume1.png",
+        "https://iopwiki.com/images/1/1d/Nagant_3D.png"
     ],
     "sharkry": [
-        "https://iopwiki.com/images/thumb/a/ac/Sharkry_Whole.png/800px-Sharkry_Whole.png"
+        "https://iopwiki.com/images/thumb/a/ac/Sharkry_Whole.png/800px-Sharkry_Whole.png",
+        "https://iopwiki.com/images/8/86/Sharky_3D.png"
     ],
     "cheeta": [
         "https://iopwiki.com/images/3/31/Cheeta_Whole.png",
-        "https://iopwiki.com/images/thumb/8/8e/GFL2_Cheeta_costume1.png/1280px-GFL2_Cheeta_costume1.png"
+        "https://iopwiki.com/images/thumb/8/8e/GFL2_Cheeta_costume1.png/1280px-GFL2_Cheeta_costume1.png",
+        "https://iopwiki.com/images/c/c4/Cheeta_3D.png"
     ],
     "colphne": [
         "https://iopwiki.com/images/5/51/Colphne_Whole.png",
-        "https://iopwiki.com/images/thumb/e/ef/Colphne_costume1.png/1280px-Colphne_costume1.png"
+        "https://iopwiki.com/images/thumb/e/ef/Colphne_costume1.png/1280px-Colphne_costume1.png",
+        "https://iopwiki.com/images/0/0c/Colphne_3D.png"
     ],
     "groza": [
         "https://iopwiki.com/images/thumb/2/24/Groza_Whole.png/1024px-Groza_Whole.png",
         "https://iopwiki.com/images/thumb/3/3f/Groza_costume3.png/1280px-Groza_costume3.png",
         "https://iopwiki.com/images/thumb/e/ec/Groza_costume1.png/1280px-Groza_costume1.png",
-        "https://iopwiki.com/images/thumb/b/bb/Groza_costume2.png/1280px-Groza_costume2.png"
+        "https://iopwiki.com/images/thumb/b/bb/Groza_costume2.png/1280px-Groza_costume2.png",
+        "https://iopwiki.com/images/3/3a/Groza_3D.png"
     ],
     "krolik": [
         "https://iopwiki.com/images/thumb/d/d8/Charolic_Whole.png/1280px-Charolic_Whole.png",
         "https://iopwiki.com/images/thumb/d/d4/Krolik_costume2.png/1280px-Krolik_costume2.png",
-        "https://iopwiki.com/images/thumb/1/1a/Charolic_costume1.png/1280px-Charolic_costume1.png"
+        "https://iopwiki.com/images/thumb/1/1a/Charolic_costume1.png/1280px-Charolic_costume1.png",
+        "https://iopwiki.com/images/8/82/Charolic_3D.png"
     ],
     "ksenia": [
-        "https://iopwiki.com/images/thumb/f/f4/Ksenia_Whole.png/800px-Ksenia_Whole.png"
+        "https://iopwiki.com/images/thumb/f/f4/Ksenia_Whole.png/800px-Ksenia_Whole.png",
+        "https://iopwiki.com/images/f/f9/Ksenia_%28GFL2%29_3D.png"
     ],
     "littara": [
-        "https://iopwiki.com/images/thumb/f/f0/Littara_Whole.png/1280px-Littara_Whole.png"
+        "https://iopwiki.com/images/thumb/f/f0/Littara_Whole.png/1280px-Littara_Whole.png",
+        "https://iopwiki.com/images/3/3d/Littara_3D.png"
     ],
     "vepley": [
         "https://iopwiki.com/images/thumb/9/9d/Vepley_Whole.png/800px-Vepley_Whole.png",
         "https://iopwiki.com/images/thumb/f/ff/Vepley_costume1.png/1280px-Vepley_costume1.png",
-        "https://iopwiki.com/images/thumb/6/6b/Vepley_costume2.png/1280px-Vepley_costume2.png"
+        "https://iopwiki.com/images/thumb/6/6b/Vepley_costume2.png/1280px-Vepley_costume2.png",
+        "https://iopwiki.com/images/2/26/Vepley_3D.png"
     ],
     "lotta": [
         "https://iopwiki.com/images/thumb/f/fb/Lotta_Whole.png/800px-Lotta_Whole.png",
-        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LottaSR01.png"
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LottaSR01.png",
+        "https://iopwiki.com/images/1/18/Lotta_3D.png"
     ],
     "nemesis": [
         "https://iopwiki.com/images/thumb/a/aa/Nemesis_Whole.png/1280px-Nemesis_Whole.png",
         "https://iopwiki.com/images/thumb/3/34/Nemesis_costume2.png/1280px-Nemesis_costume2.png",
         "https://iopwiki.com/images/thumb/2/2c/Nemesis_costume3.png/1280px-Nemesis_costume3.png",
-        "https://iopwiki.com/images/thumb/0/03/Nemesis_costume1.png/1280px-Nemesis_costume1.png"
+        "https://iopwiki.com/images/thumb/0/03/Nemesis_costume1.png/1280px-Nemesis_costume1.png",
+        "https://iopwiki.com/images/2/2a/Nemesis_3D.png"
     ],
     "sabrina": [
         "https://iopwiki.com/images/thumb/9/94/Sabrina_Whole.png/1024px-Sabrina_Whole.png",
-        "https://iopwiki.com/images/thumb/c/cb/Sabrina_costume1.png/1280px-Sabrina_costume1.png"
+        "https://iopwiki.com/images/thumb/c/cb/Sabrina_costume1.png/1280px-Sabrina_costume1.png",
+        "https://iopwiki.com/images/e/ed/Sabrina_3D.png"
     ],
     "suomi": [
         "https://iopwiki.com/images/thumb/8/87/Suomi_%28GFL2%29_Whole.png/800px-Suomi_%28GFL2%29_Whole.png",
-        "https://iopwiki.com/images/thumb/1/1c/Suomi_%28GFL2%29_costume1.png/1280px-Suomi_%28GFL2%29_costume1.png"
+        "https://iopwiki.com/images/thumb/1/1c/Suomi_%28GFL2%29_costume1.png/1280px-Suomi_%28GFL2%29_costume1.png",
+        "https://iopwiki.com/images/a/ad/Suomi_%28GFL2%29_3D.png"
     ],
     "tololo": [
         "https://iopwiki.com/images/thumb/f/fc/Tololo_Whole.png/1024px-Tololo_Whole.png",
-        "https://iopwiki.com/images/thumb/4/4f/Tololo_costume1.png/1280px-Tololo_costume1.png"
+        "https://iopwiki.com/images/thumb/4/4f/Tololo_costume1.png/1280px-Tololo_costume1.png",
+        "https://iopwiki.com/images/a/a7/Tololo_3D.png"
     ],
     "papasha": [
-        "https://iopwiki.com/images/thumb/f/fe/Papasha_Whole.png/1280px-Papasha_Whole.png"
+        "https://iopwiki.com/images/thumb/f/fe/Papasha_Whole.png/1280px-Papasha_Whole.png",
+        "https://iopwiki.com/images/5/52/Papasha_3D.png"
     ],
     "peritya": [
         "https://iopwiki.com/images/thumb/a/af/Peritya_Whole.png/1024px-Peritya_Whole.png",
-        "https://iopwiki.com/images/thumb/5/59/Peritya_costume1.png/1280px-Peritya_costume1.png"
+        "https://iopwiki.com/images/thumb/5/59/Peritya_costume1.png/1280px-Peritya_costume1.png",
+        "https://iopwiki.com/images/7/7a/Peritya_3D.png"
     ],
     "ullrid": [
-        "https://iopwiki.com/images/thumb/a/af/Ullrid_Whole.png/1280px-Ullrid_Whole.png"
+        "https://iopwiki.com/images/thumb/a/af/Ullrid_Whole.png/1280px-Ullrid_Whole.png",
+        "https://iopwiki.com/images/0/03/Ullrid_3D.png"
     ],
     "vector": [
         "https://iopwiki.com/images/c/c0/Vector_Whole.png",
@@ -209,6 +231,11 @@ DOLL_IMAGES = {
     "jiangyu": [
         "https://iopwiki.com/images/thumb/c/c8/Jiangyu_Whole.png/1280px-Jiangyu_Whole.png",
         "https://iopwiki.com/images/thumb/4/48/Jiangyu_%28GFL2%29_3D.png/1280px-Jiangyu_%28GFL2%29_3D.png"
+    ],
+    "peri": [
+        "https://imgur.com/ZDbnaa8",
+        "https://imgur.com/NBzz2n4"
+
     ]
 
 
@@ -245,8 +272,8 @@ DOLL_NAMES = {
    "dushevnaya": ["dush", "dushev", "dushevnaya", "ksvk"],
    "daiyan": ["type95", "daiyan", "type 95"],
    "zhaohui": ["zhaohui"],
-   "jiangyu": ["jianyu", "type97", "type 97"]
-
+   "jiangyu": ["jianyu", "type97", "type 97"],
+   "peri": ["peri", "mp5"]
 
 }
 
