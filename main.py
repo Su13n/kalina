@@ -129,25 +129,25 @@ for canonical_name, aliases in DOLL_NAMES.items():
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
     return
 
-    if normalized in DOLL_NAMES["makiatto"]:
-        base_embed = gf2_embeds.get_makiatto()
-        images = DOLL_IMAGES["makiatto"]
-    elif normalized in DOLL_NAMES["klukai"]:
-        base_embed = gf2_embeds.get_embed("klukai")
-        images = DOLL_IMAGES["klukai"]
-    elif normalized in DOLL_NAMES["mosin"]:
-        base_embed = gf2_embeds.get_mosin()
-        images = DOLL_IMAGES["mosin"]
-    elif normalized in DOLL_NAMES["nagant"]:
-        base_embed = gf2_embeds.get_nagant()
-        images = DOLL_IMAGES["nagant"]    
-    elif normalized in DOLL_NAMES["andoris"]:
-        base_embed = gf2_embeds.get_andoris()
-        images = DOLL_IMAGES["andoris"]
-    elif normalized
-    else:
-        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-        return
+    # if normalized in DOLL_NAMES["makiatto"]:
+    #     base_embed = gf2_embeds.get_makiatto()
+    #     images = DOLL_IMAGES["makiatto"]
+    # elif normalized in DOLL_NAMES["klukai"]:
+    #     base_embed = gf2_embeds.get_embed("klukai")
+    #     images = DOLL_IMAGES["klukai"]
+    # elif normalized in DOLL_NAMES["mosin"]:
+    #     base_embed = gf2_embeds.get_mosin()
+    #     images = DOLL_IMAGES["mosin"]
+    # elif normalized in DOLL_NAMES["nagant"]:
+    #     base_embed = gf2_embeds.get_nagant()
+    #     images = DOLL_IMAGES["nagant"]    
+    # elif normalized in DOLL_NAMES["andoris"]:
+    #     base_embed = gf2_embeds.get_andoris()
+    #     images = DOLL_IMAGES["andoris"]
+    # elif normalized
+    # else:
+    #     await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+    #     return
 
     view = DollView(base_embed, images)
     # Set the embed image to the first one by default
