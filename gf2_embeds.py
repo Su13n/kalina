@@ -314,22 +314,22 @@ DOLL_DATA = {
         "personality": "Courage",
         "thumbnail": "https://iopwiki.com/images/8/84/Krolik_S.png"
     },
-    # "": {
-    #     "name": "",
-    #     "iop_url": "https://iopwiki.com/wiki/",
-    #     "rarity": "Standard",
-    #     "affiliation": "",
-    #     "body_type": "",
-    #     "role": "",
-    #     "specialty": "",
-    #     "signature": "",
-    #     "weapon_type": "",
-    #     "imprint_name": "",
-    #     "affinity": "",
-    #     "weakness": "",
-    #     "personality": "",
-    #     "thumbnail": ""
-    # },
+    "ksenia": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/Ksenia",
+        "rarity": "Standard",
+        "affiliation": "POL-03 Security Division",
+        "body_type": "SSD-62D ",
+        "role": "Support",
+        "specialty": "Heal & Stability Regen / Buff",
+        "signature": "Stechkin",
+        "weapon_type": "HG",
+        "imprint_name": "None",
+        "affinity": "Light Ammo / Burn",
+        "weakness": "Medium Ammo / Burn",
+        "personality": "Eloquence",
+        "thumbnail": "https://iopwiki.com/images/f/f5/Ksenia_%28GFL2%29_S.png"
+    },
     # "": {
     #     "name": "",
     #     "iop_url": "https://iopwiki.com/wiki/",

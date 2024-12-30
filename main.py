@@ -115,6 +115,9 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/d/d8/Charolic_Whole.png/1280px-Charolic_Whole.png",
         "https://iopwiki.com/images/thumb/d/d4/Krolik_costume2.png/1280px-Krolik_costume2.png",
         "https://iopwiki.com/images/thumb/1/1a/Charolic_costume1.png/1280px-Charolic_costume1.png"
+    ],
+    "ksenia": [
+        "https://iopwiki.com/images/thumb/f/f4/Ksenia_Whole.png/800px-Ksenia_Whole.png"
     ]
 
 
@@ -132,7 +135,7 @@ DOLL_NAMES = {
    "colphne": ["colphne"],
    "groza": ["groza", "ots", "ots-14", "ots14"],
    "krolik": ["krolik"],
-
+   "ksenia": ["ksenia", "stechkin"]
    
 }
 
