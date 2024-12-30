@@ -42,7 +42,7 @@ tree = app_commands.CommandTree(client)
 @tree.command(name = "embedcreate", guild=discord.Object(id=GUILD))
 async def embed_create(interaction: discord.Interaction):
     if interaction.user.id == 224589196235505665:
-        await interaction.channel.send(embed=get_makiatto())
+        await interaction.channel.send(embed=gf2_embeds.get_makiatto)
     else:
         await interaction.response.send_message("You are not allowed to do that.", ephemeral=True)
         
