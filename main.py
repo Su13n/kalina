@@ -120,6 +120,8 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     for canonical_name, aliases in DOLL_NAMES.items():
         print(f"CN: {canonical_name}\nAliases: {aliases}\n\n")
         if normalized in aliases:
+            print("normalised is in aliases")
+            print(f"Normalised: {normalized}\nOrig. input: {doll}\nCN: {canonical_name}\n\n")
             base_embed = gf2_embeds.get_embed(canonical_name)
             images = DOLL_IMAGES[canonical_name]
             break
