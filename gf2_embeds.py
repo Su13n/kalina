@@ -328,9 +328,9 @@ DOLL_DATA = {
         "personality": "Resourcefullness",
         "thumbnail": "https://iopwiki.com/images/4/4e/Littara_S.png"
     },
-    "": {
-        "name": "",
-        "iop_url": "https://iopwiki.com/wiki/",
+    "lotta": {
+        "name": "Lotta",
+        "iop_url": "https://iopwiki.com/wiki/Lotta",
         "rarity": "Standard",
         "affiliation": "Doll Community",
         "body_type": "SSD-62D",
