@@ -344,21 +344,21 @@ DOLL_DATA = {
         "personality": "Resourcefullness",
         "thumbnail": "https://iopwiki.com/images/3/3b/Lotta_S.png"
     },
-    "": {
-        "name": "",
+    "nemesis": {
+        "name": "Nemesis",
         "iop_url": "https://iopwiki.com/wiki/",
         "rarity": "Standard",
-        "affiliation": "",
-        "body_type": "",
-        "role": "",
-        "specialty": "",
-        "signature": "",
-        "weapon_type": "",
-        "imprint_name": "",
-        "affinity": "",
-        "weakness": "",
-        "personality": "",
-        "thumbnail": ""
+        "affiliation": "[Elmo](https://iopwiki.com/wiki/Elmo) MCV",
+        "body_type": "SST-05A2",
+        "role": "Sentinel",
+        "specialty": "Single Target Damage / Assist",
+        "signature": "OM 50/SAN 511",
+        "weapon_type": "RF",
+        "imprint_name": "None",
+        "affinity": "Heavy Ammo / Corrosion",
+        "weakness": "Light Ammo / Hydro",
+        "personality": "Creativity",
+        "thumbnail": "https://iopwiki.com/images/3/37/Nemesis_S.png"
     },
     # "": {
     #     "name": "",
