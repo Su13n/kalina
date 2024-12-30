@@ -321,8 +321,8 @@ def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, si
     embed.add_field(name="Role",
                     value=role,
                     inline=True)
-    embed.add_field(name="Speciality",
-                    value=speciality,
+    embed.add_field(name="Specialty",
+                    value=specialty,
                     inline=False)
     embed.add_field(name="Signature Weapon",
                     value=signature,
