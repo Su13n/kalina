@@ -239,7 +239,7 @@ DOLL_DATA = {
         "iop_url": "https://iopwiki.com/wiki/Sharkry",
         "rarity": "Standard",
         "affiliation": "Zucchero Café",
-        "body_type": "SSD-62D ",
+        "body_type": "SSD-62D",
         "role": "Sentinel",
         "specialty": "Single Target Damage / Debuff",
         "signature": "Robinson Armament XCR",
@@ -397,10 +397,10 @@ DOLL_DATA = {
 }
 
 def get_embed(doll_name: str) -> discord.Embed:
-    data = DOLL_DATA.get(doll_name.lower())
+    data = DOLL_DATA.get(doll_name)
     if not data:
         return None  # or handle error differently
-
+    print("in get_embed")
     embed = discord.Embed(
         title=data["name"],
         url=data["iop_url"],
