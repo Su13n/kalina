@@ -129,8 +129,9 @@ async def embed_create(interaction: discord.Interaction, doll: str):
             embed = base_embed.copy()
             embed.set_image(url=images[0])
             await interaction.response.send_message(embed=embed, view=view)
-        
-    await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+
+    if not base_embed:    
+        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
 
     # If not in dictionary, respond ephemeral
     
