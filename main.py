@@ -233,9 +233,8 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/4/48/Jiangyu_%28GFL2%29_3D.png/1280px-Jiangyu_%28GFL2%29_3D.png"
     ],
     "peri": [
-        "https://imgur.com/ZDbnaa8",
-        "https://imgur.com/NBzz2n4"
-
+        "https://i.imgur.com/ZDbnaa8.png",
+        "https://i.imgur.com/NBzz2n4.png"
     ]
 
 
