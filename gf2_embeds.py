@@ -400,7 +400,8 @@ def get_embed(doll_name: str) -> discord.Embed:
     data = DOLL_DATA[doll_name]
     if not data:
         return None  # or handle error differently
-    print(f"in get_embed\ndata name: {data["name"]}")
+    dname = data["name"]
+    print(f"in get_embed\ndata name: {dname}")
     embed = discord.Embed(
         title=data["name"],
         url=data["iop_url"],
