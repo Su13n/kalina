@@ -94,6 +94,9 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/6/61/Nagant_Whole.png/800px-Nagant_Whole.png",
         "https://iopwiki.com/images/thumb/c/c1/Nagant_costume1.png/1280px-Nagant_costume1.png"
     ],
+    "sharkry": [
+        "https://iopwiki.com/images/thumb/a/ac/Sharkry_Whole.png/800px-Sharkry_Whole.png"
+    ]
 
 }
 

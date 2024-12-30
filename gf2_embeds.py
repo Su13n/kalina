@@ -100,56 +100,6 @@ def get_andoris():
     
     return embed
 
-# def get_klukai():
-#     embed = discord.Embed(title="Clukay",
-#                         url="https://iopwiki.com/wiki/Klukai",
-#                         colour=0xf40068)
-
-#     embed.set_author(name="IOP Wiki",
-#                     url="https://iopwiki.com/",
-#                     icon_url="https://iopwiki.com/favicon.ico")
-
-#     embed.add_field(name="Rarity",
-#                     value="Elite",
-#                     inline=True)
-#     embed.add_field(name="Affiliation",
-#                     value="H.I.D.E 404",
-#                     inline=True)
-#     embed.add_field(name="Body type",
-#                     value="SST-05",
-#                     inline=False)
-#     embed.add_field(name="Role",
-#                     value="Sentinel",
-#                     inline=True)
-#     embed.add_field(name="Speciality",
-#                     value="?",
-#                     inline=False)
-#     embed.add_field(name="Signature Weapon",
-#                     value="HK416",
-#                     inline=True)
-#     embed.add_field(name="Weapon Type",
-#                     value="AR",
-#                     inline=True)
-#     embed.add_field(name="Imprint Boost",
-#                     value="[Scylla](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
-#                     inline=False)
-#     embed.add_field(name="Affinities",
-#                     value="Medium Ammo / Corrosion",
-#                     inline=True)
-#     embed.add_field(name="Weaknesses",
-#                     value="Shotgun Ammo / Electric",
-#                     inline=True)
-#     embed.add_field(name="Personality",
-#                     value="?",
-#                     inline=False)
-
-#     embed.set_thumbnail(url="https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png")
-
-#     embed.set_footer(text="Azure",
-#                     icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
-
-#     return embed
-
 def get_qiongjiu():
     embed = discord.Embed(title="Qiongjiu",
                       url="https://iopwiki.com/wiki/Qiongjiu",
@@ -250,56 +200,6 @@ def get_mosin():
 
     return embed
 
-def get_nagant():
-    embed = discord.Embed(title="Nagant",
-                      url="https://iopwiki.com/wiki/Nagant",
-                      colour=0xf40068)
-
-    embed.set_author(name="IOP Wiki",
-                    url="https://iopwiki.com/",
-                    icon_url="https://iopwiki.com/favicon.ico")
-
-    embed.add_field(name="Rarity",
-                    value="Standard",
-                    inline=True)
-    embed.add_field(name="Affiliation",
-                    value="POL-03 Public Security Management Department",
-                    inline=True)
-    embed.add_field(name="Body type",
-                    value="SSD-62D",
-                    inline=False)
-    embed.add_field(name="Role",
-                    value="Support",
-                    inline=True)
-    embed.add_field(name="Speciality",
-                    value="Single Target Debuff / Pursuit",
-                    inline=False)
-    embed.add_field(name="Signature Weapon",
-                    value="Nagant M1895",
-                    inline=True)
-    embed.add_field(name="Weapon Type",
-                    value="HG",
-                    inline=True)
-    embed.add_field(name="Imprint Boost",
-                    value="None",
-                    inline=False)
-    embed.add_field(name="Affinities",
-                    value="Light Ammo / Corrosion",
-                    inline=True)
-    embed.add_field(name="Weaknesses",
-                    value="Shotgun Ammo / Burn",
-                    inline=True)
-    embed.add_field(name="Personality",
-                    value="Eloquence",
-                    inline=False)
-
-    embed.set_thumbnail(url="https://iopwiki.com/images/thumb/3/34/Nagant_S.png/250px-Nagant_S.png")
-
-    embed.set_footer(text="Azure",
-                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
-
-    return embed
-
 # Example template dict with keys matching what get_embed needs:
 DOLL_DATA = {
     "klukai": {
@@ -317,6 +217,166 @@ DOLL_DATA = {
         "weakness": "Shotgun Ammo / Electric",
         "personality": "?",
         "thumbnail": "https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png"
+    },
+    "nagant": {
+        "name": "Nagant",
+        "iop_url": "https://iopwiki.com/wiki/Nagant",
+        "rarity": "Standard",
+        "affiliation": "POL-03 Public Security Management Department",
+        "body_type": "SSD-62D",
+        "role": "Support",
+        "specialty": "Single Target Debuff / Pursuit"
+        "signature": "Nagant M1895",
+        "weapon_type": "HG",
+        "imprint_name": "None",
+        "affinity": "Light Ammo / Corrosion",
+        "weakness": "Shotgun Ammo / Burn",
+        "personality": "Eloquence",
+        "thumbnail": "https://iopwiki.com/images/thumb/3/34/Nagant_S.png/250px-Nagant_S.png"
+    },
+    "sharkry": {
+        "name": "Sharkry",
+        "iop_url": "https://iopwiki.com/wiki/Sharkry",
+        "rarity": "Standard",
+        "affiliation": "Zucchero Café",
+        "body_type": "SSD-62D ",
+        "role": "Sentinel",
+        "specialty": "Single Target Damage / Debuff"
+        "signature": "Robinson Armament XCR",
+        "weapon_type": "AR",
+        "imprint_name": "None",
+        "affinity": "Medium  Ammo / Burn",
+        "weakness": "Medium Ammo / Corrosiion",
+        "personality": "Resourcefullness",
+        "thumbnail": "https://iopwiki.com/images/e/e5/Sharkry_S.png"
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": ""
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
     }
 }
 
