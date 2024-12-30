@@ -94,7 +94,7 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/6/61/Nagant_Whole.png/800px-Nagant_Whole.png",
         "https://iopwiki.com/images/thumb/c/c1/Nagant_costume1.png/1280px-Nagant_costume1.png"
     ],
-    
+
 }
 
 DOLL_NAMES = {
@@ -125,6 +125,15 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     elif normalized in DOLL_NAMES["klukai"]:
         base_embed = gf2_embeds.get_klukai()
         images = DOLL_IMAGES["klukai"]
+    elif normalized in DOLL_NAMES["mosin"]:
+        base_embed = gf2_embeds.get_mosin()
+        images = DOLL_IMAGES["mosin"]
+    elif normalized in DOLL_NAMES["nagant"]:
+        base_embed = gf2_embeds.get_nagant()
+        images = DOLL_IMAGES["nagant"]    
+    elif normalized in DOLL_NAMES["andoris"]:
+        base_embed = gf2_embeds.get_andoris()
+        images = DOLL_IMAGES["andoris"]
     else:
         # etc. or another dictionary approach
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
