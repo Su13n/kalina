@@ -116,11 +116,11 @@ DOLL_NAMES = {
 async def embed_create(interaction: discord.Interaction, doll: str):
     base_embed, images = None, None
 
-for canonical_name, aliases in DOLL_NAMES.items():
-    if normalized in aliases:
-        base_embed = gf2_embeds.get_embed(canonical_name)
-        images = DOLL_IMAGES[canonical_name]
-        break
+    for canonical_name, aliases in DOLL_NAMES.items():
+        if normalized in aliases:
+            base_embed = gf2_embeds.get_embed(canonical_name)
+            images = DOLL_IMAGES[canonical_name]
+            break
 
     def find_canonical_doll(normalized):
         return ALIASES.get(normalized, None)
