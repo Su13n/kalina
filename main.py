@@ -37,7 +37,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        #await self.loop.create_task(schedule_next_reminder())
+        await self.loop.create_task(schedule_next_reminder())
         print(f"{self.user} is ready!")
 
 client = aclient()
@@ -45,77 +45,77 @@ guild = discord.Object(id=GUILD)
 tree = app_commands.CommandTree(client)
 
 
-# @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
-# @app_commands.describe(doll="The doll you want to see information of")
-# async def embed_create(interaction: discord.Interaction, doll: str):
-#     doll = doll.lower()
-#     if doll == "wawa" or doll == "wa2000" or doll == "wa2k" or doll == "maki" or doll == "makiatto":
-#         await interaction.response.send_message(embed=gf2_embeds.get_makiatto())
-#     elif doll == "andoris": await interaction.response.send_message(embed=gf2_embeds.get_andoris())
-#     elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
-#     else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+@tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
+@app_commands.describe(doll="The doll you want to see information of")
+async def embed_create(interaction: discord.Interaction, doll: str):
+    doll = doll.lower()
+    if doll == "wawa" or doll == "wa2000" or doll == "wa2k" or doll == "maki" or doll == "makiatto":
+        await interaction.response.send_message(embed=gf2_embeds.get_makiatto())
+    elif doll == "andoris": await interaction.response.send_message(embed=gf2_embeds.get_andoris())
+    elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
+    else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         
-# async def get_reset_time():
-#     now = datetime.utcnow()
-#     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
-#     if now.hour > 5:
-#         target += timedelta(days=1)
-#     time_left = target - now 
-#     return f"{time_left.seconds // 3600}h {time_left.seconds % 3600 // 60}m"
+async def get_reset_time():
+    now = datetime.utcnow()
+    target = now.replace(hour=5, minute=0, second=0, microsecond=0)
+    if now.hour > 5:
+        target += timedelta(days=1)
+    time_left = target - now 
+    return f"{time_left.seconds // 3600}h {time_left.seconds % 3600 // 60}m"
 
-# @tree.command(name = "dailyreset", description="Shows how many hours are left until daily reset", guild=discord.Object(id=GUILD))
-# async def embed_create(interaction: discord.Interaction):
-#     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
+@tree.command(name = "dailyreset", description="Shows how many hours are left until daily reset", guild=discord.Object(id=GUILD))
+async def embed_create(interaction: discord.Interaction):
+    await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-# async def schedule_next_reminder():
-#     while True:
-#         now = datetime.utcnow()
-#         next_run = None
-#         for hour, minute in TARGET_TIMES:
-#             candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
-#             if candidate > now:
-#                 next_run = candidate
-#                 break
+async def schedule_next_reminder():
+    while True:
+        now = datetime.utcnow()
+        next_run = None
+        for hour, minute in TARGET_TIMES:
+            candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            if candidate > now:
+                next_run = candidate
+                break
         
-#         # If all times passed for today, schedule tomorrow's first time
-#         if not next_run:
-#             next_run = now + timedelta(days=1)
-#             next_run = next_run.replace(
-#                 hour=TARGET_TIMES[0][0],
-#                 minute=TARGET_TIMES[0][1],
-#                 second=0,
-#                 microsecond=0
-#             )
+        # If all times passed for today, schedule tomorrow's first time
+        if not next_run:
+            next_run = now + timedelta(days=1)
+            next_run = next_run.replace(
+                hour=TARGET_TIMES[0][0],
+                minute=TARGET_TIMES[0][1],
+                second=0,
+                microsecond=0
+            )
 
-#         wait_seconds = (next_run - now).total_seconds()
-#         print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds).")
+        wait_seconds = (next_run - now).total_seconds()
+        print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds).")
         
-#         # Sleep until the next reminder time
-#         await asyncio.sleep(wait_seconds)
+        # Sleep until the next reminder time
+        await asyncio.sleep(wait_seconds)
         
-#         # Send the reminder
-#         await task()
+        # Send the reminder
+        await task()
 
-# async def task():
-#     print("Sending message...")
-#     await supply_reminder()
+async def task():
+    print("Sending message...")
+    await supply_reminder()
 
-# async def supply_reminder():
-#     channel = client.get_channel(1321452634284232777)  # Replace with valid channel ID
-#     try:
-#         sticker = await client.fetch_sticker(1323038318363152446)  # Replace with valid sticker ID
-#     except:
-#         sticker = None
+async def supply_reminder():
+    channel = client.get_channel(1321452634284232777)  # Replace with valid channel ID
+    try:
+        sticker = await client.fetch_sticker(1323038318363152446)  # Replace with valid sticker ID
+    except:
+        sticker = None
 
-#     embed = discord.Embed(
-#         title="Friendly Reminder!",
-#         description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
-#         color=0x3498db
-#     )
-#     if sticker:
-#         embed.set_image(url=sticker.url)
+    embed = discord.Embed(
+        title="Friendly Reminder!",
+        description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
+        color=0x3498db
+    )
+    if sticker:
+        embed.set_image(url=sticker.url)
 
-#     await channel.send(embed=embed)
+    await channel.send(embed=embed)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
