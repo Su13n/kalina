@@ -127,7 +127,11 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/f/ff/Vepley_costume1.png/1280px-Vepley_costume1.png",
         "https://iopwiki.com/images/thumb/6/6b/Vepley_costume2.png/1280px-Vepley_costume2.png"
     ],
-    
+    "lotta": [
+        "https://iopwiki.com/images/thumb/f/fb/Lotta_Whole.png/800px-Lotta_Whole.png",
+        "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LottaSR01.png"
+    ],
+
 
 
 }
@@ -147,6 +151,8 @@ DOLL_NAMES = {
    "ksenia": ["ksenia", "stechkin"],
    "littara": ["littara", "galil"],
    "vepley": ["vepr", "vepley", "vepr-12"],
+   "lotta": ["lotta"],
+
    
 }
 

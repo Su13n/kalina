@@ -328,22 +328,22 @@ DOLL_DATA = {
         "personality": "Resourcefullness",
         "thumbnail": "https://iopwiki.com/images/4/4e/Littara_S.png"
     },
-    # "": {
-    #     "name": "",
-    #     "iop_url": "https://iopwiki.com/wiki/",
-    #     "rarity": "Standard",
-    #     "affiliation": "",
-    #     "body_type": "",
-    #     "role": "",
-    #     "specialty": "",
-    #     "signature": "",
-    #     "weapon_type": "",
-    #     "imprint_name": "",
-    #     "affinity": "",
-    #     "weakness": "",
-    #     "personality": "",
-    #     "thumbnail": ""
-    # },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "Doll Community",
+        "body_type": "SSD-62D",
+        "role": "Sentinel",
+        "specialty": "AoE Damage / Debuff / Assist",
+        "signature": "M1 Super 90",
+        "weapon_type": "SG",
+        "imprint_name": "None",
+        "affinity": "Shotgun Ammo / Freeze",
+        "weakness": "Medium Ammo / Burn",
+        "personality": "Resourcefullness",
+        "thumbnail": "https://iopwiki.com/images/3/3b/Lotta_S.png"
+    },
     # "": {
     #     "name": "",
     #     "iop_url": "https://iopwiki.com/wiki/",
