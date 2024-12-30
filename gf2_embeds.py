@@ -225,7 +225,7 @@ DOLL_DATA = {
         "affiliation": "POL-03 Public Security Management Department",
         "body_type": "SSD-62D",
         "role": "Support",
-        "specialty": "Single Target Debuff / Pursuit"
+        "specialty": "Single Target Debuff / Pursuit",
         "signature": "Nagant M1895",
         "weapon_type": "HG",
         "imprint_name": "None",
@@ -241,7 +241,7 @@ DOLL_DATA = {
         "affiliation": "Zucchero Café",
         "body_type": "SSD-62D ",
         "role": "Sentinel",
-        "specialty": "Single Target Damage / Debuff"
+        "specialty": "Single Target Damage / Debuff",
         "signature": "Robinson Armament XCR",
         "weapon_type": "AR",
         "imprint_name": "None",
@@ -257,7 +257,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -273,7 +273,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -289,7 +289,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -305,7 +305,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -321,7 +321,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -337,7 +337,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -353,7 +353,7 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
@@ -369,7 +369,23 @@ DOLL_DATA = {
         "affiliation": "",
         "body_type": "",
         "role": "",
-        "specialty": ""
+        "specialty": "",
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": "",
         "signature": "",
         "weapon_type": "",
         "imprint_name": "",
