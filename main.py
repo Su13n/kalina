@@ -244,7 +244,7 @@ DOLL_NAMES = {
    "makiatto": ["makiatto", "wa2000", "wawa", "wa2k", "maki"],
    "klukai": ["klukai", "clukay", "klukay", "416", "hk416"],
    "andoris": ["andoris"],
-   "qiongiu": ["qiongjiu", "qj"],
+   "qiongjiu": ["qiongjiu", "qj"],
    "mosin": ["mosin", "mosin-nagant"],
    "nagant": ["nagant"],
    "sharkry": ["sharkry"],
