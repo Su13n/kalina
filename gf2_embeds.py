@@ -105,7 +105,7 @@ def get_andoris():
     return embed
 
 def get_klukai():
-    embed = discord.Embed(title="Klukay",
+    embed = discord.Embed(title="Clukay",
                         url="https://iopwiki.com/wiki/Klukai",
                         colour=0xf40068)
 
