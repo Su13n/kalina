@@ -344,22 +344,22 @@ DOLL_DATA = {
         "personality": "Resourcefullness",
         "thumbnail": "https://iopwiki.com/images/3/3b/Lotta_S.png"
     },
-    # "": {
-    #     "name": "",
-    #     "iop_url": "https://iopwiki.com/wiki/",
-    #     "rarity": "Standard",
-    #     "affiliation": "",
-    #     "body_type": "",
-    #     "role": "",
-    #     "specialty": "",
-    #     "signature": "",
-    #     "weapon_type": "",
-    #     "imprint_name": "",
-    #     "affinity": "",
-    #     "weakness": "",
-    #     "personality": "",
-    #     "thumbnail": ""
-    # },
+    "": {
+        "name": "",
+        "iop_url": "https://iopwiki.com/wiki/",
+        "rarity": "Standard",
+        "affiliation": "",
+        "body_type": "",
+        "role": "",
+        "specialty": "",
+        "signature": "",
+        "weapon_type": "",
+        "imprint_name": "",
+        "affinity": "",
+        "weakness": "",
+        "personality": "",
+        "thumbnail": ""
+    },
     # "": {
     #     "name": "",
     #     "iop_url": "https://iopwiki.com/wiki/",

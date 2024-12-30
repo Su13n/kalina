@@ -131,7 +131,12 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/f/fb/Lotta_Whole.png/800px-Lotta_Whole.png",
         "https://gf2.mcc.wiki/image/doll/Avatar_Whole_LottaSR01.png"
     ],
-
+    "nemesis": [
+        "https://iopwiki.com/images/thumb/a/aa/Nemesis_Whole.png/1280px-Nemesis_Whole.png",
+        "https://iopwiki.com/images/thumb/3/34/Nemesis_costume2.png/1280px-Nemesis_costume2.png",
+        "https://iopwiki.com/images/thumb/2/2c/Nemesis_costume3.png/1280px-Nemesis_costume3.png",
+        "https://iopwiki.com/images/thumb/0/03/Nemesis_costume1.png/1280px-Nemesis_costume1.png"
+    ]
 
 
 }
@@ -152,7 +157,8 @@ DOLL_NAMES = {
    "littara": ["littara", "galil"],
    "vepley": ["vepr", "vepley", "vepr-12"],
    "lotta": ["lotta"],
-
+   "nemesis": ["nemesis"],
+   
    
 }
 
