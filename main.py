@@ -111,9 +111,15 @@ DOLL_NAMES = {
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
     normalized = doll.lower()
+    ALIASES = {}
+    for canonical, aliases in DOLL_NAMES.items():
+        for alias in aliases:
+            ALIASES[alias] = canonical
 
+    def find_canonical_doll(normalized):
+        return ALIASES.get(normalized, None)
     # If not in dictionary, respond ephemeral
-    if normalized not in DOLL_NAMES:
+    if find_canonical_doll(normalized) not in DOLL_NAMES:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         return
 
