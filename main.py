@@ -114,8 +114,9 @@ DOLL_NAMES = {
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
+    normalized = doll.lower()
     base_embed, images = None, None
-
+    
     for canonical_name, aliases in DOLL_NAMES.items():
         if normalized in aliases:
             base_embed = gf2_embeds.get_embed(canonical_name)
