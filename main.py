@@ -114,18 +114,20 @@ DOLL_NAMES = {
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
-    normalized = doll.lower()
-    ALIASES = {}
-    for canonical, aliases in DOLL_NAMES.items():
-        for alias in aliases:
-            ALIASES[alias] = canonical
+    base_embed, images = None, None
+
+for canonical_name, aliases in DOLL_NAMES.items():
+    if normalized in aliases:
+        base_embed = gf2_embeds.get_embed(canonical_name)
+        images = DOLL_IMAGES[canonical_name]
+        break
 
     def find_canonical_doll(normalized):
         return ALIASES.get(normalized, None)
     # If not in dictionary, respond ephemeral
-    if find_canonical_doll(normalized) not in DOLL_NAMES:
+    if not base_embed:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-        return
+    return
 
     if normalized in DOLL_NAMES["makiatto"]:
         base_embed = gf2_embeds.get_makiatto()
@@ -142,6 +144,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     elif normalized in DOLL_NAMES["andoris"]:
         base_embed = gf2_embeds.get_andoris()
         images = DOLL_IMAGES["andoris"]
+    elif normalized
     else:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         return
