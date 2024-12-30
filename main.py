@@ -184,7 +184,8 @@ DOLL_NAMES = {
    "tololo": ["tll", "tololo"],
    "papasha": ["ppsh", "papasha"],
    "peritya": ["peritya", "cat", "catgirl"],
-   "ullrid": ["ullrid"]
+   "ullrid": ["ullrid"],
+   "suomi": ["suo", "suomi"]
 
 }
 
