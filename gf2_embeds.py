@@ -199,7 +199,7 @@ DOLL_DATA = {
         "weakness": "Heavy Ammo / Hydro",
         "personality": "Friendliness",
         "thumbnail": "https://iopwiki.com/images/thumb/5/52/Vepley_S.png"
-        }
+    },
     "nagant": {
         "name": "Nagant",
         "iop_url": "https://iopwiki.com/wiki/Nagant",
