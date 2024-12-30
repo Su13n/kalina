@@ -384,7 +384,7 @@ DOLL_DATA = {
         "affinity": "Light Ammo / Burn",
         "weakness": "Heavy Ammo / ?",
         "personality": "?",
-        "thumbnail": "https://imgur.com/yFq7EGH"
+        "thumbnail": "https://i.imgur.com/yFq7EGH.png"
     },
     "nagant": {
         "name": "Nagant",
