@@ -3,6 +3,7 @@ import asyncio
 from more_itertools import sliced
 import discord
 from discord import app_commands
+from discord.ui import Button
 from discord.ext import tasks, commands
 from io import BytesIO
 import requests
@@ -44,17 +45,54 @@ client = aclient()
 guild = discord.Object(id=GUILD)
 tree = app_commands.CommandTree(client)
 
+DOLL_MAP = {
+    "wawa": gf2_embeds.get_makiatto,
+    "wa2000": gf2_embeds.get_makiatto,
+    "wa2k": gf2_embeds.get_makiatto,
+    "maki": gf2_embeds.get_makiatto,
+    "makiatto": gf2_embeds.get_makiatto,
+    "andoris": gf2_embeds.get_andoris,
+    "416": gf2_embeds.get_klukai,
+    "hk416": gf2_embeds.get_klukai,
+    "klukai": gf2_embeds.get_klukai,
+    "klukay": gf2_embeds.get_klukai
+}
 
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
-    doll = doll.lower()
-    if doll == "wawa" or doll == "wa2000" or doll == "wa2k" or doll == "maki" or doll == "makiatto":
-        await interaction.response.send_message(embed=gf2_embeds.get_makiatto())
-    elif doll == "andoris": await interaction.response.send_message(embed=gf2_embeds.get_andoris())
-    elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
-    else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-        
+    normalized = doll.lower()
+    if normalized not in DOLL_MAP:
+        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+        return
+
+    # If each doll has multiple images/embeds, collect them in a list:
+    embeds = [DOLL_MAP[normalized](), ...]  # or however you retrieve multiple images
+    view = DollView(embeds)
+    await interaction.response.send_message(embed=embeds[0], view=view)
+    
+# Example view class for arrow-button cycling:
+class DollView(discord.ui.View):
+    def __init__(self, images: list):
+        super().__init__(timeout=None)
+        self.images = images
+        self.index = 0
+
+    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="➡️")
+    async def next_image(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index + 1) % len(self.urls)
+        embed = interaction.message.embeds[0]
+        embed.set_image(url=self.urls[self.index])
+        await interaction.response.edit_message(embed=embed, view=self)
+
+    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⬅️")
+    async def next_image(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index - 1) % len(self.urls)
+        embed = interaction.message.embeds[0]
+        embed.set_image(url=self.urls[self.index])
+        await interaction.response.edit_message(embed=embed, view=self)
+
+
 async def get_reset_time():
     now = datetime.utcnow()
     target = now.replace(hour=5, minute=0, second=0, microsecond=0)
