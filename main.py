@@ -45,52 +45,71 @@ client = aclient()
 guild = discord.Object(id=GUILD)
 tree = app_commands.CommandTree(client)
 
-DOLL_MAP = {
-    "wawa": gf2_embeds.get_makiatto,
-    "wa2000": gf2_embeds.get_makiatto,
-    "wa2k": gf2_embeds.get_makiatto,
-    "maki": gf2_embeds.get_makiatto,
-    "makiatto": gf2_embeds.get_makiatto,
-    "andoris": gf2_embeds.get_andoris,
-    "416": gf2_embeds.get_klukai,
-    "hk416": gf2_embeds.get_klukai,
-    "klukai": gf2_embeds.get_klukai,
-    "klukay": gf2_embeds.get_klukai
-}
+class DollView(discord.ui.View):
+    def __init__(self, base_embed: discord.Embed, images: list[str]):
+        super().__init__()
+        self.index = 0
+        self.base_embed = base_embed
+        self.images = images
+        
+    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⬅️")
+    async def previous(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index - 1) % len(self.images)
+        embed = self._build_embed()
+        await interaction.response.edit_message(embed=embed, view=self)
 
+    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="➡️")
+    async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index + 1) % len(self.images)
+        embed = self._build_embed()
+        await interaction.response.edit_message(embed=embed, view=self)
+
+    def _build_embed(self) -> discord.Embed:
+        # Create a copy so you don't overwrite the original
+        embed = self.base_embed.copy()
+        embed.set_image(url=self.images[self.index])
+        return embed
+
+
+DOLL_IMAGES = {
+    "makiatto": [
+        "https://iopwiki.com/images/3/33/Macqiato_Whole.png",
+        "https://iopwiki.com/images/thumb/9/98/Macqiato_costume1.png/1280px-Macqiato_costume1.png"
+    ],
+    "klukai": [
+        "https://example.com/klukai1.png",
+        "https://example.com/klukai2.png"
+    ],
+    # ...
+}
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
-async def embed_create(interaction: discord.Interaction, doll: str):
+sync def embed_create(interaction: discord.Interaction, doll: str):
     normalized = doll.lower()
-    if normalized not in DOLL_MAP:
+
+    # If not in dictionary, respond ephemeral
+    if normalized not in DOLL_IMAGES:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         return
 
-    # If each doll has multiple images/embeds, collect them in a list:
-    embeds = [DOLL_MAP[normalized](), ...]  # or however you retrieve multiple images
-    view = DollView(embeds)
-    await interaction.response.send_message(embed=embeds[0], view=view)
-    
-# Example view class for arrow-button cycling:
-class DollView(discord.ui.View):
-    def __init__(self, images: list):
-        super().__init__(timeout=None)
-        self.images = images
-        self.index = 0
+    # Build your base embed from your existing function
+    # e.g. get_makiatto() can be split into get_base_makiatto() (embed w/o images)
+    if normalized in ["makiatto", "wa2000", "wawa", "wa2k", "maki"]:
+        base_embed = gf2_embeds.get_makiatto()
+        images = DOLL_IMAGES["makiatto"]
+    elif normalized in ["klukai", "416", "hk416"]:
+        base_embed = gf2_embeds.get_klukai()
+        images = DOLL_IMAGES["klukai"]
+    else:
+        # etc. or another dictionary approach
+        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
+        return
 
-    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="➡️")
-    async def next_image(self, interaction: discord.Interaction, button: discord.ui.Button):
-        self.index = (self.index + 1) % len(self.urls)
-        embed = interaction.message.embeds[0]
-        embed.set_image(url=self.urls[self.index])
-        await interaction.response.edit_message(embed=embed, view=self)
-
-    @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⬅️")
-    async def next_image(self, interaction: discord.Interaction, button: discord.ui.Button):
-        self.index = (self.index - 1) % len(self.urls)
-        embed = interaction.message.embeds[0]
-        embed.set_image(url=self.urls[self.index])
-        await interaction.response.edit_message(embed=embed, view=self)
+    view = DollView(base_embed, images)
+    # Set the embed image to the first one by default
+    embed = base_embed.copy()
+    embed.set_image(url=images[0])
+    await interaction.response.send_message(embed=embed, view=view)
 
 
 async def get_reset_time():
