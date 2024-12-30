@@ -272,6 +272,7 @@ DOLL_NAMES = {
    "daiyan": ["type95", "daiyan", "type 95"],
    "zhaohui": ["zhaohui"],
    "jiangyu": ["jianyu", "type97", "type 97"],
+   "faye": ["faye"],
    "peri": ["peri", "mp5"]
 
 }
