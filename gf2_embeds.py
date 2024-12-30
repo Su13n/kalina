@@ -300,51 +300,60 @@ def get_nagant():
 
     return embed
 
-def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, signature, weapon_type, imprint_name, affinity, weakness, personality, thumbnail):
-    embed = discord.Embed(title=name,
-                      url=iop_url,
-                      colour=0xf40068)
+# Example template dict with keys matching what get_embed needs:
+DOLL_DATA = {
+    "klukai": {
+        "name": "Clukay",
+        "iop_url": "https://iopwiki.com/wiki/Klukai",
+        "rarity": "Elite",
+        "affiliation": "H.I.D.E 404",
+        "body_type": "SST-05",
+        "role": "Sentinel",
+        "specialty": "?",
+        "signature": "HK416",
+        "weapon_type": "AR",
+        "imprint_name": "Scylla",
+        "affinity": "Medium Ammo / Corrosion",
+        "weakness": "Shotgun Ammo / Electric",
+        "personality": "?",
+        "thumbnail": "https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png"
+    }
+}
 
-    embed.set_author(name="IOP Wiki",
-                    url="https://iopwiki.com/",
-                    icon_url="https://iopwiki.com/favicon.ico")
+def get_embed(doll_name: str) -> discord.Embed:
+    data = DOLL_DATA.get(doll_name.lower())
+    if not data:
+        return None  # or handle error differently
 
-    embed.add_field(name="Rarity",
-                    value=rarity,
-                    inline=True)
-    embed.add_field(name="Affiliation",
-                    value=affiliation,
-                    inline=True)
-    embed.add_field(name="Body type",
-                    value=body_type,
-                    inline=False)
-    embed.add_field(name="Role",
-                    value=role,
-                    inline=True)
-    embed.add_field(name="Specialty",
-                    value=specialty,
-                    inline=False)
-    embed.add_field(name="Signature Weapon",
-                    value=signature,
-                    inline=True)
-    embed.add_field(name="Weapon Type",
-                    value=weapon_type,
-                    inline=True)
-    embed.add_field(name="Imprint Boost",
-                    value=f"[{imprint_name}](https://iopwiki.com/wiki/GFL2_Weapons#{weapon_type})",
-                    inline=False)
-    embed.add_field(name="Affinities",
-                    value=affinity,
-                    inline=True)
-    embed.add_field(name="Weaknesses",
-                    value=weakness,
-                    inline=True)
-    embed.add_field(name="Personality",
-                    value=personality,
-                    inline=False)
+    embed = discord.Embed(
+        title=data["name"],
+        url=data["iop_url"],
+        colour=0xf40068
+    )
+    embed.set_author(
+        name="IOP Wiki",
+        url="https://iopwiki.com/",
+        icon_url="https://iopwiki.com/favicon.ico"
+    )
+    embed.add_field(name="Rarity", value=data["rarity"], inline=True)
+    embed.add_field(name="Affiliation", value=data["affiliation"], inline=True)
+    embed.add_field(name="Body type", value=data["body_type"], inline=False)
+    embed.add_field(name="Role", value=data["role"], inline=True)
+    embed.add_field(name="Specialty", value=data["specialty"], inline=False)
+    embed.add_field(name="Signature Weapon", value=data["signature"], inline=True)
+    embed.add_field(name="Weapon Type", value=data["weapon_type"], inline=True)
+    embed.add_field(
+        name="Imprint Boost",
+        value=f"[{data['imprint_name']}](https://iopwiki.com/wiki/GFL2_Weapons#{data['weapon_type']})",
+        inline=False
+    )
+    embed.add_field(name="Affinities", value=data["affinity"], inline=True)
+    embed.add_field(name="Weaknesses", value=data["weakness"], inline=True)
+    embed.add_field(name="Personality", value=data["personality"], inline=False)
 
-    embed.set_thumbnail(url=thumbnail)
-
-    embed.set_footer(text="Azure",
-                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
+    embed.set_thumbnail(url=data["thumbnail"])
+    embed.set_footer(
+        text="Azure",
+        icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp"
+    )
     return embed
