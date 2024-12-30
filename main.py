@@ -97,10 +97,15 @@ DOLL_IMAGES = {
     "sharkry": [
         "https://iopwiki.com/images/thumb/a/ac/Sharkry_Whole.png/800px-Sharkry_Whole.png"
     ],
-    "colphne": [
-        "https://iopwiki.com/images/5/51/Colphne_Whole.png"
+    "cheeta": [
+        "https://iopwiki.com/images/3/31/Cheeta_Whole.png",
+        "https://iopwiki.com/images/thumb/8/8e/GFL2_Cheeta_costume1.png/1280px-GFL2_Cheeta_costume1.png"
     ],
-    
+    "colphne": [
+        "https://iopwiki.com/images/5/51/Colphne_Whole.png",
+        "https://iopwiki.com/images/thumb/e/ef/Colphne_costume1.png/1280px-Colphne_costume1.png"
+    ],
+
 
 }
 
