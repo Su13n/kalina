@@ -41,7 +41,7 @@ tree = app_commands.CommandTree(client)
 
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
-async def embed_create(interaction: discord.Interaction, doll):
+async def embed_create(interaction: discord.Interaction, doll: str):
     doll = doll.lower()
     if doll == "wawa" or doll == "wa2000" or doll == "maki" or doll == "makiatto":
         await interaction.channel.send(embed=gf2_embeds.get_makiatto())
