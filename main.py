@@ -96,7 +96,11 @@ DOLL_IMAGES = {
     ],
     "sharkry": [
         "https://iopwiki.com/images/thumb/a/ac/Sharkry_Whole.png/800px-Sharkry_Whole.png"
-    ]
+    ],
+    "colphne": [
+        "https://iopwiki.com/images/5/51/Colphne_Whole.png"
+    ],
+    
 
 }
 
@@ -107,7 +111,10 @@ DOLL_NAMES = {
    "qiongiu": ["qiongjiu", "qj"],
    "mosin": ["mosin", "mosin-nagant"],
    "nagant": ["nagant"],
-   "sharkry": ["sharkry"]
+   "sharkry": ["sharkry"],
+   "cheeta": ["cheeta", "mp7"],
+   "colphne": ["colphne"],
+
 
 }
 
@@ -118,10 +125,7 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     base_embed, images = None, None
     
     for canonical_name, aliases in DOLL_NAMES.items():
-        print(f"CN: {canonical_name}\nAliases: {aliases}\n\n")
         if normalized in aliases:
-            print("normalised is in aliases")
-            print(f"Normalised: {normalized}\nOrig. input: {doll}\nCN: {canonical_name}\n\n")
             base_embed = gf2_embeds.get_embed(canonical_name)
             images = DOLL_IMAGES[canonical_name]
             view = DollView(base_embed, images)
@@ -132,30 +136,6 @@ async def embed_create(interaction: discord.Interaction, doll: str):
 
     if not base_embed:    
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-
-    # If not in dictionary, respond ephemeral
-    
-    # print("so far so good")
-    # if normalized in DOLL_NAMES["makiatto"]:
-    #     base_embed = gf2_embeds.get_makiatto()
-    #     images = DOLL_IMAGES["makiatto"]
-    # elif normalized in DOLL_NAMES["klukai"]:
-    #     base_embed = gf2_embeds.get_embed("klukai")
-    #     images = DOLL_IMAGES["klukai"]
-    # elif normalized in DOLL_NAMES["mosin"]:
-    #     base_embed = gf2_embeds.get_mosin()
-    #     images = DOLL_IMAGES["mosin"]
-    # elif normalized in DOLL_NAMES["nagant"]:
-    #     base_embed = gf2_embeds.get_nagant()
-    #     images = DOLL_IMAGES["nagant"]    
-    # elif normalized in DOLL_NAMES["andoris"]:
-    #     base_embed = gf2_embeds.get_andoris()
-    #     images = DOLL_IMAGES["andoris"]
-    # else:
-    #     await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
-    #     return
-
-    
 
 async def get_reset_time():
     now = datetime.utcnow()
