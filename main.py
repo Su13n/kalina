@@ -84,7 +84,7 @@ DOLL_IMAGES = {
 }
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
-sync def embed_create(interaction: discord.Interaction, doll: str):
+async def embed_create(interaction: discord.Interaction, doll: str):
     normalized = doll.lower()
 
     # If not in dictionary, respond ephemeral
