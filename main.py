@@ -123,8 +123,6 @@ async def embed_create(interaction: discord.Interaction, doll: str):
             images = DOLL_IMAGES[canonical_name]
             break
 
-    def find_canonical_doll(normalized):
-        return ALIASES.get(normalized, None)
     # If not in dictionary, respond ephemeral
     if not base_embed:
         await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
