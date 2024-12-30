@@ -50,56 +50,6 @@ def get_makiatto():
 
     return embed
 
-def get_andoris():
-    embed = discord.Embed(title="Andoris",
-                      url="https://iopwiki.com/wiki/Andoris",
-                      colour=0xf40068)
-
-    embed.set_author(name="IOP Wiki",
-                    url="https://iopwiki.com/",
-                    icon_url="https://iopwiki.com/favicon.ico")
-
-    embed.add_field(name="Rarity",
-                    value="Elite",
-                    inline=True)
-    embed.add_field(name="Affiliation",
-                    value="H.I.D.E 404",
-                    inline=True)
-    embed.add_field(name="Body type",
-                    value="SSD-62F",
-                    inline=False)
-    embed.add_field(name="Role",
-                    value="Bulwark",
-                    inline=True)
-    embed.add_field(name="Speciality",
-                    value="?",
-                    inline=False)
-    embed.add_field(name="Signature Weapon",
-                    value="G36-KSK",
-                    inline=True)
-    embed.add_field(name="Weapon Type",
-                    value="AR",
-                    inline=True)
-    embed.add_field(name="Imprint Boost",
-                    value="[Aglaea](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
-                    inline=False)
-    embed.add_field(name="Affinities",
-                    value="Medium Ammo / Electric",
-                    inline=True)
-    embed.add_field(name="Weaknesses",
-                    value="Heavy Ammo / Corrosion",
-                    inline=True)
-    embed.add_field(name="Personality",
-                    value="?",
-                    inline=False)
-
-    embed.set_thumbnail(url="https://iopwiki.com/images/9/91/Andoris_S.png")
-
-    embed.set_footer(text="Azure",
-                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
-    
-    return embed
-
 def get_qiongjiu():
     embed = discord.Embed(title="Qiongjiu",
                       url="https://iopwiki.com/wiki/Qiongjiu",
@@ -218,6 +168,38 @@ DOLL_DATA = {
         "personality": "?",
         "thumbnail": "https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png"
     },
+    "andoris": {
+        "name": "Andoris",
+        "iop_url": "https://iopwiki.com/wiki/Andoris",
+        "rarity": "Elite",
+        "affiliation": "H.I.D.E 404",
+        "body_type": "SST-62F",
+        "role": "Bulwark",
+        "specialty": "?",
+        "signature": "G36-KSK",
+        "weapon_type": "AR",
+        "imprint_name": "Aglaea",
+        "affinity": "Medium Ammo / Electric",
+        "weakness": "Heavy Ammo / Corrosion",
+        "personality": "?",
+        "thumbnail": "https://iopwiki.com/images/9/91/Andoris_S.png"
+    },
+    "vepley": {
+        "name": "Vepley",
+        "iop_url": "https://iopwiki.com/wiki/Vepley",
+        "rarity": "Elite",
+        "affiliation": "[Elmo](https://iopwiki.com/wiki/Elmo) MCV",
+        "body_type": "SSD-62D",
+        "role": "Vanguard",
+        "specialty": "Mixed Damage / Debuff / Displacement",
+        "signature": "Vepr-12",
+        "weapon_type": "SG",
+        "imprint_name": "Heart Seeker",
+        "affinity": "Shotgun Ammo",
+        "weakness": "Heavy Ammo / Hydro",
+        "personality": "Friendliness",
+        "thumbnail": "https://iopwiki.com/images/thumb/5/52/Vepley_S.png"
+        }
     "nagant": {
         "name": "Nagant",
         "iop_url": "https://iopwiki.com/wiki/Nagant",
@@ -330,22 +312,22 @@ DOLL_DATA = {
         "personality": "Eloquence",
         "thumbnail": "https://iopwiki.com/images/f/f5/Ksenia_%28GFL2%29_S.png"
     },
-    # "": {
-    #     "name": "",
-    #     "iop_url": "https://iopwiki.com/wiki/",
-    #     "rarity": "Standard",
-    #     "affiliation": "",
-    #     "body_type": "",
-    #     "role": "",
-    #     "specialty": "",
-    #     "signature": "",
-    #     "weapon_type": "",
-    #     "imprint_name": "",
-    #     "affinity": "",
-    #     "weakness": "",
-    #     "personality": "",
-    #     "thumbnail": ""
-    # },
+    "littara": {
+        "name": "Littara",
+        "iop_url": "https://iopwiki.com/wiki/Littara",
+        "rarity": "Standard",
+        "affiliation": "[][][][]",
+        "body_type": "SSD-62G ",
+        "role": "Sentinel",
+        "specialty": "AoE Damage / Pursuit",
+        "signature": " 	Galil ARM ",
+        "weapon_type": "MG",
+        "imprint_name": "None",
+        "affinity": "Heavy Ammo / Burn",
+        "weakness": "Light Ammo / Burn",
+        "personality": "Resourcefullness",
+        "thumbnail": "https://iopwiki.com/images/4/4e/Littara_S.png"
+    },
     # "": {
     #     "name": "",
     #     "iop_url": "https://iopwiki.com/wiki/",

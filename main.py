@@ -118,7 +118,16 @@ DOLL_IMAGES = {
     ],
     "ksenia": [
         "https://iopwiki.com/images/thumb/f/f4/Ksenia_Whole.png/800px-Ksenia_Whole.png"
-    ]
+    ],
+    "littara": [
+        "https://iopwiki.com/images/thumb/f/f0/Littara_Whole.png/1280px-Littara_Whole.png"
+    ],
+    "vepley": [
+        "https://iopwiki.com/images/thumb/9/9d/Vepley_Whole.png/800px-Vepley_Whole.png",
+        "https://iopwiki.com/images/thumb/f/ff/Vepley_costume1.png/1280px-Vepley_costume1.png",
+        "https://iopwiki.com/images/thumb/6/6b/Vepley_costume2.png/1280px-Vepley_costume2.png"
+    ],
+    
 
 
 }
@@ -135,7 +144,9 @@ DOLL_NAMES = {
    "colphne": ["colphne"],
    "groza": ["groza", "ots", "ots-14", "ots14"],
    "krolik": ["krolik"],
-   "ksenia": ["ksenia", "stechkin"]
+   "ksenia": ["ksenia", "stechkin"],
+   "littara": ["littara", "galil"],
+   "vepley": ["vepr", "vepley", "vepr-12"],
    
 }
 
