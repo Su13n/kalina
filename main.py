@@ -136,8 +136,30 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/3/34/Nemesis_costume2.png/1280px-Nemesis_costume2.png",
         "https://iopwiki.com/images/thumb/2/2c/Nemesis_costume3.png/1280px-Nemesis_costume3.png",
         "https://iopwiki.com/images/thumb/0/03/Nemesis_costume1.png/1280px-Nemesis_costume1.png"
-    ]
-
+    ],
+    "sabrina": [
+        "https://iopwiki.com/images/thumb/9/94/Sabrina_Whole.png/1024px-Sabrina_Whole.png",
+        "https://iopwiki.com/images/thumb/c/cb/Sabrina_costume1.png/1280px-Sabrina_costume1.png"
+    ],
+    "suomi": [
+        "https://iopwiki.com/images/thumb/8/87/Suomi_%28GFL2%29_Whole.png/800px-Suomi_%28GFL2%29_Whole.png",
+        "https://iopwiki.com/images/thumb/1/1c/Suomi_%28GFL2%29_costume1.png/1280px-Suomi_%28GFL2%29_costume1.png"
+    ],
+    "tololo": [
+        "https://iopwiki.com/images/thumb/f/fc/Tololo_Whole.png/1024px-Tololo_Whole.png",
+        "https://iopwiki.com/images/thumb/4/4f/Tololo_costume1.png/1280px-Tololo_costume1.png"
+    ],
+    "papasha": [
+        "https://iopwiki.com/images/thumb/f/fe/Papasha_Whole.png/1280px-Papasha_Whole.png"
+    ],
+    "peritya": [
+        "https://iopwiki.com/images/thumb/a/af/Peritya_Whole.png/1024px-Peritya_Whole.png",
+        "https://iopwiki.com/images/thumb/5/59/Peritya_costume1.png/1280px-Peritya_costume1.png"
+    ],
+    "ullrid": [
+        "https://iopwiki.com/images/thumb/a/af/Ullrid_Whole.png/1280px-Ullrid_Whole.png"
+    ],
+    
 
 }
 
@@ -158,8 +180,12 @@ DOLL_NAMES = {
    "vepley": ["vepr", "vepley", "vepr-12"],
    "lotta": ["lotta"],
    "nemesis": ["nemesis"],
-   
-   
+   "sabrina": ["sabrina", "spas12", "spas-12", "spas"],
+   "tololo": ["tll", "tololo"],
+   "papasha": ["ppsh", "papasha"],
+   "peritya": ["peritya", "cat", "catgirl"],
+
+
 }
 
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
