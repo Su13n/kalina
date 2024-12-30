@@ -43,10 +43,10 @@ tree = app_commands.CommandTree(client)
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
     doll = doll.lower()
-    if doll == "wawa" or doll == "wa2000" or doll == "maki" or doll == "makiatto":
-        await interaction.channel.send(embed=gf2_embeds.get_makiatto())
+    if doll == "wawa" or doll == "wa2000" or doll == "wa2k" or doll == "maki" or doll == "makiatto":
+        await interaction.response.send_message(embed=gf2_embeds.get_makiatto())
     else:
-        await interaction.response.send_message("Something went wrong. Please contact Suzu.", ephemeral=True)
+        await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         
 # @tree.command(name = "embededit", guild=discord.Object(id=GUILD))
 # async def embed_create(interaction: discord.Interaction):
