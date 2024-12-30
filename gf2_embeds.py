@@ -51,3 +51,107 @@ def get_makiatto():
                     icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
 
     return embed
+
+def get_andoris():
+    embed = discord.Embed(title="Andoris",
+                      url="https://iopwiki.com/wiki/Andoris",
+                      colour=0xf40068)
+
+    embed.set_author(name="IOP Wiki",
+                    url="https://iopwiki.com/",
+                    icon_url="https://iopwiki.com/favicon.ico")
+
+    embed.add_field(name="Rarity",
+                    value="Elite",
+                    inline=True)
+    embed.add_field(name="Affiliation",
+                    value="H.I.D.E 404",
+                    inline=True)
+    embed.add_field(name="Body type",
+                    value="SSD-62F",
+                    inline=False)
+    embed.add_field(name="Role",
+                    value="Bulwark",
+                    inline=True)
+    embed.add_field(name="Speciality",
+                    value="?",
+                    inline=False)
+    embed.add_field(name="Signature Weapon",
+                    value="G36-KSK",
+                    inline=True)
+    embed.add_field(name="Weapon Type",
+                    value="AR",
+                    inline=True)
+    embed.add_field(name="Imprint Boost",
+                    value="[Aglaea](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
+                    inline=False)
+    embed.add_field(name="Affinities",
+                    value="Medium Ammo / Electric",
+                    inline=True)
+    embed.add_field(name="Weaknesses",
+                    value="Heavy Ammo / Corrosion",
+                    inline=True)
+    embed.add_field(name="Personality",
+                    value="?",
+                    inline=False)
+
+    embed.set_image(url="https://iopwiki.com/images/thumb/4/47/Andoris_Whole.png/1280px-Andoris_Whole.png")
+
+    embed.set_thumbnail(url="https://iopwiki.com/images/9/91/Andoris_S.png")
+
+    embed.set_footer(text="Azure",
+                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
+    
+    return embed
+
+def get_klukai():
+    embed = discord.Embed(title="Klukay",
+                        url="https://iopwiki.com/wiki/Klukai",
+                        colour=0xf40068)
+
+    embed.set_author(name="IOP Wiki",
+                    url="https://iopwiki.com/",
+                    icon_url="https://iopwiki.com/favicon.ico")
+
+    embed.add_field(name="Rarity",
+                    value="Elite",
+                    inline=True)
+    embed.add_field(name="Affiliation",
+                    value="H.I.D.E 404",
+                    inline=True)
+    embed.add_field(name="Body type",
+                    value="SST-05",
+                    inline=False)
+    embed.add_field(name="Role",
+                    value="Sentinel",
+                    inline=True)
+    embed.add_field(name="Speciality",
+                    value="?",
+                    inline=False)
+    embed.add_field(name="Signature Weapon",
+                    value="HK416",
+                    inline=True)
+    embed.add_field(name="Weapon Type",
+                    value="AR",
+                    inline=True)
+    embed.add_field(name="Imprint Boost",
+                    value="[Scylla](https://iopwiki.com/wiki/GFL2_Weapons#AR)",
+                    inline=False)
+    embed.add_field(name="Affinities",
+                    value="Medium Ammo / Corrosion",
+                    inline=True)
+    embed.add_field(name="Weaknesses",
+                    value="Shotgun Ammo / Electric",
+                    inline=True)
+    embed.add_field(name="Personality",
+                    value="?",
+                    inline=False)
+
+    embed.set_image(url="https://iopwiki.com/images/thumb/e/e4/Klukai_Whole.png/1280px-Klukai_Whole.png")
+
+    embed.set_thumbnail(url="https://iopwiki.com/images/thumb/1/11/Klukai_S.png/250px-Klukai_S.png")
+
+    embed.set_footer(text="Azure",
+                    icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
+
+    return embed
