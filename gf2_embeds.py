@@ -347,3 +347,4 @@ def get_embed(name, iop_url, rarity, affiliation, body_type, role, specialty, si
 
     embed.set_footer(text="Azure",
                     icon_url="https://cdn.discordapp.com/icons/1321437165774700575/ca4f95365bd06f8e9809c359185acc0d.webp")
+    return embed
