@@ -45,8 +45,8 @@ async def embed_create(interaction: discord.Interaction, doll: str):
     doll = doll.lower()
     if doll == "wawa" or doll == "wa2000" or doll == "wa2k" or doll == "maki" or doll == "makiatto":
         await interaction.response.send_message(embed=gf2_embeds.get_makiatto())
-    elif: doll == "andoris": await interaction.response.send_message(embed=gf2_embeds.get_andoris())
-    elif: doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
+    elif doll == "andoris": await interaction.response.send_message(embed=gf2_embeds.get_andoris())
+    elif doll == "416" or doll == "hk416" or doll == "klukai" or doll == "klukay": await interaction.response.send_message(embed=gf2_embeds.get_klukai())
     else: await interaction.response.send_message("There's no doll with that name!", ephemeral=True)
         
 # @tree.command(name = "embededit", guild=discord.Object(id=GUILD))
