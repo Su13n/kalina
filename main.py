@@ -81,12 +81,30 @@ DOLL_IMAGES = {
         "https://iopwiki.com/images/thumb/c/c9/Klukai_costume1.png/1280px-Klukai_costume1.png",
         "https://iopwiki.com/images/thumb/d/d0/Klukai_costume2.png/1280px-Klukai_costume2.png"
     ],
-    # ...
+    "andoris": [
+        "https://iopwiki.com/images/thumb/4/47/Andoris_Whole.png/1280px-Andoris_Whole.png",
+    ],
+    "qiongjiu": [
+        "https://iopwiki.com/images/thumb/e/ee/Qiongjiu_Whole.png/800px-Qiongjiu_Whole.png",
+    ],
+    "mosin": [
+        "https://iopwiki.com/images/thumb/3/39/Mosinnagant_Whole.png/1280px-Mosinnagant_Whole.png"
+    ],
+    "nagant": [
+        "https://iopwiki.com/images/thumb/6/61/Nagant_Whole.png/800px-Nagant_Whole.png",
+        "https://iopwiki.com/images/thumb/c/c1/Nagant_costume1.png/1280px-Nagant_costume1.png"
+    ],
+    
 }
 
 DOLL_NAMES = {
    "makiatto": ["makiatto", "wa2000", "wawa", "wa2k", "maki"],
-   "klukai": ["klukai", "clukay", "klukay", "416", "hk416"]
+   "klukai": ["klukai", "clukay", "klukay", "416", "hk416"],
+   "andoris": ["andoris"],
+   "qiongiu": ["qiongjiu", "qj"],
+   "mosin": ["mosin", "mosin-nagant"],
+   "nagant": ["nagant"],
+
 }
 
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
