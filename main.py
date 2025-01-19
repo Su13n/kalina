@@ -388,6 +388,8 @@ async def on_raw_reaction_add(payload):
         channel = client.get_channel(payload.channel_id)
         message = await channel.fetch_message(payload.message_id)
         user = client.get_user(payload.user_id)
+        for embed in message.embeds:
+            await payload.member.send(embed)
         for attachment in message.attachments:
             await payload.member.send(attachment.url)
     print(payload.emoji.name)
