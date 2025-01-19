@@ -380,7 +380,17 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
 
     await log_channel.send(embed=embed, view=url_view) 
 
-
+@client.event
+async def on_raw_reaction_add(payload):
+#print(payload.emoji)
+    if payload.emoji.name == "✉️":
+        #print("Working?")
+        channel = client.get_channel(payload.channel_id)
+        message = await channel.fetch_message(payload.message_id)
+        user = client.get_user(payload.user_id)
+        for attachment in message.attachments:
+            await payload.member.send(attachment.url)
+    print(payload.emoji.name)
 
 client.run(TOKEN)
 
