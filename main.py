@@ -400,7 +400,7 @@ async def on_raw_reaction_add(payload):
 async def forward_message(interaction: discord.Interaction, message: discord.Message):
     count = 0
     try:
-        await payload.member.send(message.content)
+        await interaction.user.send(message.content)
     except:
         print("no text")
     for attachment in message.attachments:
