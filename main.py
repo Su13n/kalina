@@ -394,7 +394,22 @@ async def on_raw_reaction_add(payload):
             print("no text")
         for attachment in message.attachments:
             await payload.member.send(attachment.url)
-    print(payload.emoji.name)
+        print(payload.emoji.name)
+
+@tree.context_menu(name="Forward Message to DMs", guild=guild)
+async def forward_message(interaction: discord.Interaction, message: discord.Message):
+    count = 0
+    try:
+        await payload.member.send(message.content)
+    except:
+        print("no text")
+    for attachment in message.attachments:
+        await interaction.user.send(message.attachments[count].url)
+        count += 1
+    if message.attachments or message.content:
+        await interaction.response.send_message(f'Successfully forwarded {message.author.mention}\'s message to your DMs.', ephemeral=True)
+    else:
+        await interaction.response.send_message(f'Something went wrong.', ephemeral=True)
 
 client.run(TOKEN)
 
