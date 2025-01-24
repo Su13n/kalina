@@ -358,6 +358,22 @@ async def supply_reminder():
 
     await channel.send(embed=embed)
 
+@client.event
+async def on_raw_reaction_add(payload):
+    print(payload.content)
+    # if payload.emoji.name == "✉️":
+    #     #print("Working?")
+    #     channel = client.get_channel(payload.channel_id)
+    #     message = await channel.fetch_message(payload.message_id)
+    #     user = client.get_user(payload.user_id)
+    #     try:
+    #         await payload.member.send(message.content)
+    #     except:
+    #         print("no text")
+    #     for attachment in message.attachments:
+    #         await payload.member.send(attachment.url)
+    #     print(payload.emoji.name)
+
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
     await interaction.response.send_message(
