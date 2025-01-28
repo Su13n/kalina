@@ -1,3 +1,4 @@
+#works
 import os
 import asyncio
 from more_itertools import sliced
@@ -358,22 +359,6 @@ async def supply_reminder():
 
     await channel.send(embed=embed)
 
-@client.event
-async def on_raw_reaction_add(payload):
-    print(payload.content)
-    # if payload.emoji.name == "✉️":
-    #     #print("Working?")
-    #     channel = client.get_channel(payload.channel_id)
-    #     message = await channel.fetch_message(payload.message_id)
-    #     user = client.get_user(payload.user_id)
-    #     try:
-    #         await payload.member.send(message.content)
-    #     except:
-    #         print("no text")
-    #     for attachment in message.attachments:
-    #         await payload.member.send(attachment.url)
-    #     print(payload.emoji.name)
-
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
     await interaction.response.send_message(
@@ -411,6 +396,41 @@ async def on_raw_reaction_add(payload):
         for attachment in message.attachments:
             await payload.member.send(attachment.url)
         print(payload.emoji.name)
+
+replacements = {
+    'x.com': 'fixupx.com',
+    'pixiv.net': 'phixiv.net',
+    'twitter.com': 'vxtwitter.com'
+}
+
+
+# Precompile regex once (outside message loop)
+escaped_domains = map(re.escape, replacements.keys())
+pattern = re.compile(
+    r'\bhttps://(www\.)?(' + '|'.join(escaped_domains) + r')\b',
+    flags=re.IGNORECASE
+)
+
+def replace_domain(match):
+    return f'https://{replacements[match.group(2)]}'
+
+@client.event
+async def on_message(payload):
+    result = ""
+    if pattern.search(payload.content):
+        result = pattern.sub(replace_domain, payload.content)
+        channel = client.get_channel(payload.channel)
+        # member = client.get_user(payload.id)
+        name = payload.author.nick
+        avatar_url = payload.author.avatar
+        webhook = await payload.channel.create_webhook(name=name)
+        await webhook.send(str(result), username=name, avatar_url=avatar_url)
+
+        webhooks = await payload.channel.webhooks()
+        for webhook in webhooks:
+            await webhook.delete()
+        await payload.delete()
+        
 
 @tree.context_menu(name="Forward Message to DMs", guild=guild)
 async def forward_message(interaction: discord.Interaction, message: discord.Message):
