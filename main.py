@@ -399,6 +399,7 @@ async def on_raw_reaction_add(payload):
 
 replacements = {
     'x.com': 'fixupx.com',
+    'instagram.com': 'ddinstagram.com',
     'pixiv.net': 'phixiv.net',
     'twitter.com': 'vxtwitter.com'
 }
