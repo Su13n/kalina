@@ -1,4 +1,3 @@
-#works
 import os
 import asyncio
 from more_itertools import sliced
@@ -401,7 +400,8 @@ replacements = {
     'x.com': 'fixupx.com',
     'instagram.com': 'ddinstagram.com',
     'pixiv.net': 'phixiv.net',
-    'twitter.com': 'vxtwitter.com'
+    'twitter.com': 'vxtwitter.com',
+    'reddit.com': 'rxddit.com'
 }
 
 
