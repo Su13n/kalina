@@ -38,7 +38,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        await self.loop.create_task(schedule_next_reminder())
+        #await self.loop.create_task(schedule_next_reminder())
         print(f"{self.user} is ready!")
 
 client = aclient()
@@ -337,9 +337,10 @@ async def schedule_next_reminder():
         # Send the reminder
         await task()
 
-async def task():
-    print("Sending message...")
-    await supply_reminder()
+# turned off supply reminder because it is not necessary anymore
+#async def task():
+ #   print("Sending message...")
+  #  await supply_reminder()
 
 async def supply_reminder():
     channel = client.get_channel(1321452634284232777)  # Replace with valid channel ID
