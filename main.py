@@ -308,12 +308,8 @@ async def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-from datetime import datetime, timedelta
-import asyncio
-import discord
-
 # Configuration
-# Starting date: 01.03.2024 15:00 (assumed local time corresponds to 3pm Berlin time)
+# Starting date: 01.03.2025 15:00 (corresponds to 3pm Berlin time)
 START_DATE = datetime(2025, 3, 1, 14, 0, 0)
 
 CYCLE_LENGTH = 22       # Total days in cycle (8 active + 14 downtime)
@@ -339,6 +335,11 @@ async def schedule_reminders():
             next_run = datetime.combine(next_active_date, candidate.time()).replace(hour=14, minute=0, second=0, microsecond=0)
         
         wait_seconds = (next_run - now).total_seconds()
+        total_seconds = int(wait_seconds)
+        days = total_seconds // (3600 * 24)
+        remainder = total_seconds % (3600 * 24)
+        hours = remainder // 3600
+        minutes = (remainder % 3600) // 60
         
         # Determine the message based on the cycle day of next_run
         next_cycle_day = ((next_run.date() - START_DATE.date()).days) % CYCLE_LENGTH
@@ -349,7 +350,8 @@ async def schedule_reminders():
         else:
             message = "It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
         
-        print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds). Message: {message}")
+        print(f"Next reminder scheduled at {next_run} (in {days} days, {hours} hours and {minutes} minutes). Message: {message}")
+        
         await asyncio.sleep(wait_seconds)
         await send_reminder(message)
 
