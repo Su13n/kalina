@@ -314,7 +314,7 @@ import discord
 
 # Configuration
 # Starting date: 01.03.2024 15:00 (assumed local time corresponds to 3pm Berlin time)
-START_DATE = datetime(2024, 3, 1, 14, 0, 0)
+START_DATE = datetime(2025, 3, 1, 14, 0, 0)
 
 CYCLE_LENGTH = 22       # Total days in cycle (8 active + 14 downtime)
 ACTIVE_PHASE_DAYS = 8   # Days 0 to 7 (relative to cycle start) are active
