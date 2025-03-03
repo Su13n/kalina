@@ -38,7 +38,7 @@ class aclient(discord.Client):
         if not self.synced:
             await tree.sync(guild=discord.Object(id=GUILD))
             self.synced = True
-        #await self.loop.create_task(schedule_next_reminder())
+        await self.loop.create_task(schedule_reminders())
         print(f"{self.user} is ready!")
 
 client = aclient()
@@ -308,56 +308,60 @@ async def get_reset_time():
 async def embed_create(interaction: discord.Interaction):
     await interaction.response.send_message(f"There are {get_reset_time()} left until the next Global server reset.", ephemeral=True)
 
-async def schedule_next_reminder():
+from datetime import datetime, timedelta
+import asyncio
+import discord
+
+# Configuration
+# Starting date: 01.03.2024 15:00 (assumed local time corresponds to 3pm Berlin time)
+START_DATE = datetime(2024, 3, 1, 14, 0, 0)
+
+CYCLE_LENGTH = 22       # Total days in cycle (8 active + 14 downtime)
+ACTIVE_PHASE_DAYS = 8   # Days 0 to 7 (relative to cycle start) are active
+
+async def schedule_reminders():
     while True:
-        now = datetime.utcnow()
-        next_run = None
-        for hour, minute in TARGET_TIMES:
-            candidate = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
-            if candidate > now:
-                next_run = candidate
-                break
+        now = datetime.now()
+        # Determine candidate time: today at 15:00 if in the future, otherwise tomorrow at 15:00
+        today_3pm = now.replace(hour=14, minute=0, second=0, microsecond=0)
+        candidate = today_3pm if now < today_3pm else today_3pm + timedelta(days=1)
         
-        # If all times passed for today, schedule tomorrow's first time
-        if not next_run:
-            next_run = now + timedelta(days=1)
-            next_run = next_run.replace(
-                hour=TARGET_TIMES[0][0],
-                minute=TARGET_TIMES[0][1],
-                second=0,
-                microsecond=0
-            )
-
+        # Calculate cycle day based on candidate's date (ignoring time)
+        days_since_start = (candidate.date() - START_DATE.date()).days
+        cycle_day = days_since_start % CYCLE_LENGTH
+        
+        if cycle_day < ACTIVE_PHASE_DAYS:
+            next_run = candidate
+        else:
+            # If candidate falls in downtime, compute the next active date (cycle resets to 0)
+            days_to_add = CYCLE_LENGTH - cycle_day
+            next_active_date = candidate.date() + timedelta(days=days_to_add)
+            next_run = datetime.combine(next_active_date, candidate.time()).replace(hour=14, minute=0, second=0, microsecond=0)
+        
         wait_seconds = (next_run - now).total_seconds()
-        print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds).")
         
-        # Sleep until the next reminder time
+        # Determine the message based on the cycle day of next_run
+        next_cycle_day = ((next_run.date() - START_DATE.date()).days) % CYCLE_LENGTH
+        if next_cycle_day == 0:
+            message = "Tomorrow marks the start of the new Gunsmoke season! ARE YOU AS EXCITED AS I AM?!"
+        elif next_cycle_day == 7:
+            message = "This Gunsmoke season is nearly over~ Time to show off one last time!"
+        else:
+            message = "It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
+        
+        print(f"Next reminder scheduled at {next_run} (in {wait_seconds} seconds). Message: {message}")
         await asyncio.sleep(wait_seconds)
-        
-        # Send the reminder
-        await task()
+        await send_reminder(message)
 
-# turned off supply reminder because it is not necessary anymore
-#async def task():
- #   print("Sending message...")
-  #  await supply_reminder()
-
-async def supply_reminder():
-    channel = client.get_channel(1321452634284232777)  # Replace with valid channel ID
-    try:
-        sticker = await client.fetch_sticker(1323038318363152446)  # Replace with valid sticker ID
-    except:
-        sticker = None
-
+async def send_reminder(message):
+    channel = client.get_channel(1321452634284232777)  # Replace with a valid channel ID
     embed = discord.Embed(
         title="Friendly Reminder!",
-        description=f"<@&{1323023802409554050}> Remember to pick up your free supplies from the shop!",
+        description=message,
         color=0x3498db
     )
-    if sticker:
-        embed.set_image(url=sticker.url)
-
     await channel.send(embed=embed)
+
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
