@@ -344,11 +344,11 @@ async def schedule_reminders():
         # Determine the message based on the cycle day of next_run
         next_cycle_day = ((next_run.date() - START_DATE.date()).days) % CYCLE_LENGTH
         if next_cycle_day == 0:
-            message = "Hey, <@&{1321444321819365406}>! Tomorrow marks the start of the new Gunsmoke season! ARE YOU AS EXCITED AS I AM?!"
+            message = "Hey, <@&1321444321819365406>! Tomorrow marks the start of the new Gunsmoke season! ARE YOU AS EXCITED AS I AM?!"
         elif next_cycle_day == 7:
-            message = "<@&{1321444321819365406}>! This Gunsmoke season is nearly over~ Time to show off one last time!"
+            message = "<@&1321444321819365406>! This Gunsmoke season is nearly over~ Time to show off one last time!"
         else:
-            message = "<@&{1321444321819365406}>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
+            message = "<@&1321444321819365406>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
         
         print(f"Next reminder scheduled at {next_run} (in {days} days, {hours} hours and {minutes} minutes). Message: {message}")
         
