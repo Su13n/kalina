@@ -353,18 +353,25 @@ async def schedule_reminders():
             message = "<@&1321444321819365406>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
         
         print(f"Next reminder scheduled at {next_run} (in {days} days, {hours} hours and {minutes} minutes). Message: {message}")
-        
+        await is_ready()
         await asyncio.sleep(wait_seconds)
         await send_reminder(message)
+        
 
 async def send_reminder(message):
     channel = client.get_channel(1321452634284232777)  # Replace with a valid channel ID
+    log_channel = client.get_channel(1321496517839683676)  # Replace with a valid channel ID
     embed = discord.Embed(
         title="Friendly Reminder!",
         description=message,
         color=0xff9117
     )
     await channel.send(embed=embed)
+    log_embed = discord.Embed(
+        title="Reminder sent!",
+        color=0xff9117
+    )
+    await log_channel.send(embed=log_embed)
 
 async def is_ready():
     channel = client.get_channel(1321496517839683676)  # Replace with a valid channel ID
