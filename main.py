@@ -40,6 +40,7 @@ class aclient(discord.Client):
             self.synced = True
         await self.loop.create_task(schedule_reminders())
         print(f"{self.user} is ready!")
+        is_ready()
 
 client = aclient()
 guild = discord.Object(id=GUILD)
@@ -360,10 +361,17 @@ async def send_reminder(message):
     embed = discord.Embed(
         title="Friendly Reminder!",
         description=message,
-        color=0x3498db
+        color=0xff9117
     )
     await channel.send(embed=embed)
 
+async def is_ready():
+    channel = client.get_channel(1321496517839683676)  # Replace with a valid channel ID
+    embed = discord.Embed(
+        title="Kalina is ready and working!",
+        color=0xff9117
+    )
+    await channel.send(embed=embed)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
