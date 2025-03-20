@@ -458,9 +458,9 @@ async def on_message(payload):
             await webhook.delete()
         await payload.delete()
     # Proceed only if the bot is mentioned.
-    if client.user in message.mentions and message.author.id == ALLOWED_USER_ID:
+    if client.user in payload.mentions and payload.author.id == ALLOWED_USER_ID:
         # Expected format: "@botname <channel_id> <message content>"
-        parts = message.content.split(maxsplit=2)
+        parts = payload.content.split(maxsplit=2)
         if len(parts) < 3:
             return  # Not enough parts in the message
 
