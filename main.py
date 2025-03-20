@@ -25,6 +25,7 @@ TARGET_TIMES = [
     (17, 0),
     (23, 0)
 ]
+ALLOWED_USER_ID = 224589196235505665
 
 class aclient(discord.Client):
     def __init__(self):
@@ -279,6 +280,8 @@ DOLL_NAMES = {
 
 }
 
+
+
 @tree.command(name = "iopwiki", description="Shows IOP Wiki information about the specified doll", guild=discord.Object(id=GUILD))
 @app_commands.describe(doll="The doll you want to see information of")
 async def embed_create(interaction: discord.Interaction, doll: str):
@@ -454,7 +457,23 @@ async def on_message(payload):
         for webhook in webhooks:
             await webhook.delete()
         await payload.delete()
-        
+    # Proceed only if the bot is mentioned.
+    if client.user in message.mentions and message.author.id == ALLOWED_USER_ID:
+        # Expected format: "@botname <channel_id> <message content>"
+        parts = message.content.split(maxsplit=2)
+        if len(parts) < 3:
+            return  # Not enough parts in the message
+
+        try:
+            channel_id = int(parts[1])
+        except ValueError:
+            return  # Invalid channel ID provided
+
+        target_channel = client.get_channel(channel_id)
+        if target_channel:
+            await target_channel.send(parts[2])
+
+    await bot.process_commands(message)
 
 @tree.context_menu(name="Forward Message to DMs", guild=guild)
 async def forward_message(interaction: discord.Interaction, message: discord.Message):
