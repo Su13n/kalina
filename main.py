@@ -473,7 +473,6 @@ async def on_message(payload):
         if target_channel:
             await target_channel.send(parts[2])
 
-    await bot.process_commands(message)
 
 @tree.context_menu(name="Forward Message to DMs", guild=guild)
 async def forward_message(interaction: discord.Interaction, message: discord.Message):
