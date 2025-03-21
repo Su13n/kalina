@@ -458,21 +458,27 @@ async def on_message(payload):
             await webhook.delete()
         await payload.delete()
     # Proceed only if the bot is mentioned.
-    if client.user in payload.mentions and payload.author.id == ALLOWED_USER_ID:
-        # Expected format: "@botname <channel_id> <message content>"
-        parts = payload.content.split(maxsplit=2)
-        if len(parts) < 3:
-            return  # Not enough parts in the message
+    if client.user in payload.mentions:
+        if payload.author.id == ALLOWED_USER_ID:
+        # send kalina chat messages
+            # Expected format: "@botname <channel_id> <message content>"
+            parts = payload.content.split(maxsplit=2)
+            if len(parts) < 3:
+                return  # Not enough parts in the message
 
-        try:
-            channel_id = int(parts[1])
-        except ValueError:
-            return  # Invalid channel ID provided
+            try:
+                channel_id = int(parts[1])
+            except ValueError:
+                return  # Invalid channel ID provided
 
-        target_channel = client.get_channel(channel_id)
-        if target_channel:
-            await target_channel.send(parts[2])
-
+            target_channel = client.get_channel(channel_id)
+            if target_channel:
+                await target_channel.send(parts[2])
+        elif payload.author.id != ALLOWED_USER_ID:
+            # standard response
+            channel = client.get_channel(payload.channel)
+            payload.reply("Eh? Sorry, but I'm busy right now...")
+        
 
 @tree.context_menu(name="Forward Message to DMs", guild=guild)
 async def forward_message(interaction: discord.Interaction, message: discord.Message):
