@@ -317,7 +317,7 @@ async def embed_create(interaction: discord.Interaction):
 # Starting date: 01.03.2025 15:00 (corresponds to 3pm Berlin time)
 START_DATE = datetime(2025, 3, 1, 14, 0, 0)
 
-CYCLE_LENGTH = 22       # Total days in cycle (8 active + 14 downtime)
+CYCLE_LENGTH = 21       # Total days in cycle (8 active + 14 downtime)
 ACTIVE_PHASE_DAYS = 8   # Days 0 to 7 (relative to cycle start) are active
 
 async def schedule_reminders():
@@ -371,7 +371,8 @@ async def send_reminder(message):
     )
     await channel.send(embed=embed)
     log_embed = discord.Embed(
-        title="Reminder sent!",
+        title="Following reminder sent!",
+        description=message,
         color=0xff9117
     )
     await log_channel.send(embed=log_embed)
