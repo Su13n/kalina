@@ -362,7 +362,7 @@ async def schedule_reminders():
         
 
 async def send_reminder(message):
-    channel = client.get_channel(1321452634284232777)  # Replace with a valid channel ID
+    channel = client.get_channel(1321437166332805132)  # Replace with a valid channel ID
     log_channel = client.get_channel(1321496517839683676)  # Replace with a valid channel ID
     embed = discord.Embed(
         title="Friendly Reminder!",
