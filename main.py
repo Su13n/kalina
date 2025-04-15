@@ -356,7 +356,7 @@ async def schedule_reminders():
             message = "<@&1321444321819365406>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
         
         print(f"Next reminder scheduled at {next_run} (in {days} days, {hours} hours and {minutes} minutes). Message: {message}")
-        await is_ready()
+        #await is_ready()
         await asyncio.sleep(wait_seconds)
         await send_reminder(message)
         
