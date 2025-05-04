@@ -1,3 +1,4 @@
+import sys
 import os
 import asyncio
 from more_itertools import sliced
@@ -13,6 +14,8 @@ from textwrap import wrap
 from dotenv import load_dotenv
 import threading
 import gf2_embeds
+
+sys.stdout.reconfigure(line_buffering=true)
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
