@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 import threading
 import gf2_embeds
 
-sys.stdout.reconfigure(line_buffering=true)
+sys.stdout.reconfigure(line_buffering=True)
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
