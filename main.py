@@ -354,9 +354,9 @@ async def schedule_reminders():
         if next_cycle_day == 0:
             message = "Hey, <@&1321444321819365406>! Tomorrow marks the start of a new Gunsmoke season! ARE YOU AS EXCITED AS I AM?!"
         elif next_cycle_day == 7:
-            message = "<@&1321444321819365406>! Gunsmoke season is nearly over~ Time to show off one last time!"
+            message = "<@&1368866361027334154>! Gunsmoke season is nearly over~ Time to show off one last time!"
         else:
-            message = "<@&1321444321819365406>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
+            message = "<@&1368866361027334154>~ It's Gunsmoke season! Don't forget to give those baddies a good whoopin'!"
         
         print(f"Next reminder scheduled at {next_run} (in {days} days, {hours} hours and {minutes} minutes). Message: {message}")
         #await is_ready()
