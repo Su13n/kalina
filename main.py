@@ -386,7 +386,7 @@ async def is_ready():
         title="Kalina is ready and working!",
         color=0xff9117
     )
-    await channel.send("<@&1321444321819365406>",embed=embed)
+    await channel.send(embed=embed)
 
 @tree.context_menu(name='Report Message', guild=guild)
 async def report_message(interaction: discord.Interaction, message: discord.Message):
